@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Pages() {
+function FooterPagesList() {
   return (
     <div>
       <ul className="pages">
@@ -22,4 +22,4 @@ function Pages() {
   )
 }
 
-export default Pages
+export default FooterPagesList

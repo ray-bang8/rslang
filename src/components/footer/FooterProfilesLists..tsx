@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Profiles() {
+function FooterProfilesList() {
   return (
     <div>
       <ul className="profiles">
@@ -22,4 +22,4 @@ function Profiles() {
   )
 }
 
-export default Profiles
+export default FooterProfilesList

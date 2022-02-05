@@ -1,13 +1,13 @@
 import React from 'react'
 import Follow from './Follow'
-import Pages from './Pages'
-import Profiles from './Profiles.'
+import FooterPagesList from './FooterPagesList'
+import FooterProfilesList from './FooterProfilesLists.'
 
 function RightSide() {
   return (
     <div className="right-slide">
-      <Pages />
-      <Profiles />
+      <FooterPagesList />
+      <FooterProfilesList />
       <Follow />
     </div>
   )
