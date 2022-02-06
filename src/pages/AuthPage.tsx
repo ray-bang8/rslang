@@ -1,17 +1,13 @@
 import React from 'react'
 import '../styles/App.css'
+import Auth from '../components/auth/Auth'
 
-function Authpage() {
+function AuthPage() {
   return (
-    <div className="Auth">
-      <div className="Sidebar">
-        Photo
-      </div>
-      <div className="Main">
-        Welcome
-      </div>
+    <div>
+      <Auth />
     </div>
   )
 }
 
-export default Authpage
+export default AuthPage
