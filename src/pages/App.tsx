@@ -1,11 +1,13 @@
 import React from 'react'
 import '../styles/App.css'
-import AboutTeamPage from './AboutTeamPage'
+// import AboutTeamPage from './AboutTeamPage'
+import DiffWordsPage from './DiffWordsPage'
 
 function App() {
   return (
     <div className="App">
-      <AboutTeamPage />
+      {/* <AboutTeamPage /> */}
+      <DiffWordsPage />
     </div>
   )
 }
