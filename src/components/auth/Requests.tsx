@@ -19,7 +19,6 @@ async function createUser(url: string, name: string, email: string, password: st
       })
     })
     const content = await response.json()
-    console.log(content)
   } catch (error) {
     console.log(error)
   }
