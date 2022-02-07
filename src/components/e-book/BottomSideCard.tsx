@@ -1,21 +1,22 @@
 import React from 'react'
 
 type CardChunk = {
-  textExample: string
-  textExampleTranslate: string | JSON
-  word: string
-  image: string
-  audio: string
-  textMeaningTranslate: string
-  textMeaning: string
+  textExample?: string
+  textExampleTranslate?: string | JSON
+  word?: string
+  image?: string
+  audio?: string
+  textMeaningTranslate?: string
+  textMeaning?: string
 }
 
 interface propCardChunk {
   card: CardChunk
+  styleBg: string
 }
 
 function BottomSideCard(props: propCardChunk) {
-  const { card } = props
+  const { card, styleBg } = props
   const {
     textExample,
     textExampleTranslate,
@@ -25,10 +26,12 @@ function BottomSideCard(props: propCardChunk) {
     textMeaningTranslate,
     textMeaning,
   } = card
+
   return (
-    <div>
-      <p>{textMeaning}</p>
+    <div className="card__bottom" style={{ background: `${styleBg}` }}>
+      <hr className="card__bottom-hr" />
       <p>{textMeaningTranslate}</p>
+      <p className="card__top-end">{textExampleTranslate}</p>
     </div>
   )
 }

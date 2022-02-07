@@ -20,7 +20,7 @@ interface Card {
 }
 
 function EBook() {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([{ data: 'as', id: 8892 }])
   const [group, setGroup] = useState(1)
 
   useEffect(() => {
@@ -34,7 +34,12 @@ function EBook() {
 
   return (
     <div>
-      <div className="cards-wrapper">{/* <WordCardEbook data={data} /> */}</div>
+      <div className="cards-wrapper">
+        {/* <WordCardEbook data={data} key={86463} /> */}
+        {data.map((el) => (
+          <WordCardEbook data={el} key={el.id} />
+        ))}
+      </div>
     </div>
   )
 }
