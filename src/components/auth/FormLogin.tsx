@@ -1,17 +1,22 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { useState } from 'react'
 import './Auth.css'
 import { signIn } from './Requests'
 
 function FormLogin() {
   const baseUrl: string = 'https://rslang-team48.herokuapp.com/'
-  const handleLoginSubmit = async(event: any) => {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleLoginSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const inputEmailSignin: string = (document.querySelector('.email-sign-in') as HTMLInputElement).value
-    const inputPasswordSignin: string = (document.querySelector('.password-sign-in') as HTMLInputElement).value
-    await signIn(baseUrl, inputEmailSignin, inputPasswordSignin)
+    await signIn(baseUrl, email, password)
+    setEmail('')
+    setPassword('')
   }
+
   return (
     <div className="form-container">
       <div className="home-button">
@@ -20,11 +25,11 @@ function FormLogin() {
       <div className="title">
         Welcome
       </div>
-      <div className="form">
-        <input className="email-sign-in" name="email" placeholder="Email" type="email" />
-        <input className="password-sign-in" name="password" placeholder="Password" type="password" />
-        <button className="login" onClick={handleLoginSubmit} type="submit">Log in</button>
-      </div>
+      <form className="form" onSubmit={handleLoginSubmit}>
+        <input className="email-sign-in" onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" value={email} />
+        <input className="password-sign-in" onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" value={password} />
+        <input className="login" type="submit" value="Login" />
+      </form>
       <div className="no-account">
         Have no account yet?
       </div>

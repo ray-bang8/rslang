@@ -1,18 +1,24 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { useState } from 'react'
 import './Auth.css'
 import { createUser } from './Requests'
 
 function FormRegister() {
   const baseUrl: string = 'https://rslang-team48.herokuapp.com/'
-  const handleRegisterSubmit = async(event: any) => {
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleRegisterSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const inputName: string = (document.querySelector('.name') as HTMLInputElement).value
-    const inputEmail: string = (document.querySelector('.email') as HTMLInputElement).value
-    const inputPassword: string = (document.querySelector('.password') as HTMLInputElement).value
-    await createUser(baseUrl, inputName, inputEmail, inputPassword)
+    await createUser(baseUrl, name, email, password)
+    setName('')
+    setEmail('')
+    setPassword('')
   }
+
   return (
     <div className="form-container">
       <div className="home-button">
@@ -21,12 +27,12 @@ function FormRegister() {
       <div className="title">
         Welcome
       </div>
-      <div className="form">
-        <input className="name" name="name" placeholder="Name" type="text" />
-        <input className="email" name="email" placeholder="Email" type="email" />
-        <input className="password" name="password" placeholder="Password" type="password" />
-        <button className="login" onClick={handleRegisterSubmit} type="submit">Register</button>
-      </div>
+      <form className="form" onSubmit={handleRegisterSubmit}>
+        <input className="name" onChange={(e) => setName(e.target.value)} placeholder="Name" type="text" value={name} />
+        <input className="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" value={email} />
+        <input className="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" value={password} />
+        <input className="login" type="submit" value="Register" />
+      </form>
       <div className="no-account">
         Already have an account?
       </div>
