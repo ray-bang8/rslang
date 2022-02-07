@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@200;400;500&family=Titillium+Web&display=swap');
+main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    // width: 1440px;
+    .container {
+        width: 1440px;
+    }
+
+}
+.homePage {
+    
+    display: flex;
+    position: relative;
+    height: 640px;
+    align-items: center;
+    justify-content: flex-end;
+    .bgDesign {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        .bgImg {
+            position: absolute;
+            bottom: 0;
+        }
+        // .leftSide, .schoolImg {
+        //     bottom: 0;
+
+        // }
+        .rightSide {
+            right: 0;
+            top: 110px;
+        }
+    }
+    .mainText {
+        position: relative;
+        margin-right: 80px;
+        
+        h2 {
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 400;
+            font-size: 48px;
+            line-height: 55px;
+            font-style: normal;
+            margin-bottom: 5px;
+        }
+        p {
+            font-family: 'Titillium Web', sans-serif;
+            font-size: 24px;
+            line-height: 48px;
+            text-align: center;
+            a {
+                text-decoration: none;
+                color: red;
+            }
+        }
+    
+    }
+
+}
+.ebookPage {
+   
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 592px;
+    justify-content: space-between;
+    .headText{
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 64px;
+        line-height: 48px;
+        text-align: center;
+        color: #FE5244;
+        
+    }
+    .ebookDesign {
+        margin-top: 96px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        .ebookImg {
+            position: absolute;
+            margin-top: 10px;
+        }
+        .rightImg {
+            right: 90px;
+            bottom: 90px;
+        }
+    }
+    .eBookStart {
+        text-align: center;
+        margin-right: 700px;
+        margin-bottom: 200px;
+        h2 {
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 48px;
+            line-height: 72px;
+        }
+        .startBtn {
+            width: 213px;
+            height: 88px;
+            border-radius: 20px;
+            background: red;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 40px;
+            line-height: 72px;
+            text-align: center;
+            color: white;
+            border: none;
+            cursor: pointer;
+            
+        }
+    }
+ 
+}
+.gamesSection {
+    position: relative;
+    height: 544px;
+    // display: flex;
+   
+    .headText {
+        color: #FE5244;
+        font-family: 'Titillium Web', sans-serif;
+        font-style: normal;
+        font-size: 64px;
+        line-height: 48px;
+        text-align: center;
+        font-weight: 400;
+    }
+    .leftImg{
+        
+        position: absolute;
+        top: 85px;
+        left: 0;
+    }
+    .gamesField {
+        display: flex;
+        justify-content: space-between;
+    
+    .leftField {
+        margin-left: 70px;
+        margin-top: 15px;
+        .leftText {
+            font-family: 'Titillium Web', sans-serif;
+            font-style: normal;
+            font-size: 48px;
+            line-height: 72px;    
+            font-weight: 400;
+        }
+    }
+    .rightField {
+        position: relative;
+        width: 38%;
+        
+        .first {
+            position: absolute;
+            top: 0;
+            left: -30px;
+            
+        }
+        .second {
+            position: absolute;
+            top: 132px;
+            right: 30px;
+        }
+
+    }
+}   
+}
+.statSection {
+    height: 557px;
+    padding-top: 41px;
+    position: relative;
+    .statText {
+        font-family: 'Titillium Web', sans-serif;
+        font-style: normal;
+        color: #FE5244;
+        font-weight: 400;
+        font-size: 64px;
+        line-height: 48px;
+        text-align: center;
+    }
+    .statBgImg {
+        position: absolute;
+        top: 93px;
+        right: 0;
+        pointer-events: none;
+    }
+    .statsField {
+        display: flex;
+        justify-content: space-between;
+       
+        .leftStatField {
+            position: relative;
+            width: 39%;
+            
+            
+
+            .timerImg {
+                position: absolute;
+                top: -30px;
+                left: 0;
+            }
+            .statImg {
+                position: absolute;
+                top: -30px;
+                right: 0;
+            }
+        }
+
+        .rightStatField {
+            // text-align: center;
+            margin-right: 180px;
+            text-align: center;
+            margin-bottom: 80px;
+
+            .rightText {
+                font-family: 'Titillium Web', sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 48px;
+                line-height: 72px;
+               
+                
+            }
+            .statsBtn{
+                background: red;
+                width: 213px;
+                height: 88px;
+                border-radius: 20px;
+                cursor: pointer;
+                border: 0;
+                color: white;
+                font-family: 'Titillium Web', sans-serif;
+                font-weight: 400;
+                font-size: 40px;
+                line-height: 72px;
+                text-align: center;
+            }
+        }
+    }
+}
+.aboutSection {
+    height: 623px;
+    
+    .aboutBody {
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    .aboutHeader {
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 64px;
+        line-height: 48px;
+        text-align: center;
+        color: #FE5244;
+
+    }
+    .aboutText {
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 48px;
+        line-height: 72px;
+        text-align: center;
+    }
+
+    .teamBtn {
+        width: 213px;
+        height: 88px;
+        border: 0;
+        border-radius: 20px;
+        background: red;
+        color: white;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 40px;
+        line-height: 72px;
+        cursor: pointer;
+
+    }
+}
+}
