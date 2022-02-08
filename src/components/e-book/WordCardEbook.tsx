@@ -8,7 +8,6 @@ interface propCard {
 }
 
 function WordCardEbook(props: propCard) {
-  // @ts-ignore
   const { data } = props
   const styleBg = RandomBgColor()
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
+// import * as iyut from '../../img/vol.png'
 
 type CardChunk = {
   transcription?: string
-  string?: string | JSON
   word?: string
   wordTranslate?: string
   image?: string
@@ -10,6 +10,8 @@ type CardChunk = {
   textMeaningTranslate?: string
   textExample?: string
   textMeaning?: string
+  audioExample?: string
+  audioMeaning?: string
 }
 
 interface propCardChunk {
@@ -20,6 +22,9 @@ interface propCardChunk {
 function UpSideCard(props: propCardChunk) {
   const { card, styleBg } = props
   const {
+    audio,
+    audioExample,
+    audioMeaning,
     word,
     wordTranslate,
     transcription,
@@ -31,11 +36,35 @@ function UpSideCard(props: propCardChunk) {
   const [img, setImg] = useState('')
   const mainUrl = 'https://rslang-team48.herokuapp.com/'
 
+  // sound voice
+  const [soundSrc, setSoundSrc] = useState('')
+  const sound = new Audio()
+
   useEffect(() => {
     if (image) {
       setImg(image)
     }
-  }, [card, image])
+    setSoundSrc(`${mainUrl}${audio}`)
+  }, [card, image, audio])
+
+  // sound Player
+  const handlerSoundClick = () => {
+    sound.src = soundSrc
+
+    sound.play().then(() => {
+      setTimeout(() => {
+        sound.src = `${mainUrl}${audioMeaning}`
+
+        sound.play().then(() => {
+          setTimeout(() => {
+            sound.src = `${mainUrl}${audioExample}`
+
+            sound.play()
+          }, sound.duration * 1000)
+        })
+      }, sound.duration * 1000)
+    })
+  }
 
   return (
     <div className="card__top" style={{ background: `url(${mainUrl}${img})` }}>
@@ -46,13 +75,20 @@ function UpSideCard(props: propCardChunk) {
 
       <div className="card__top-text">
         <h3 className="card__top-text-title">{word}</h3>
-        <p className="card__top-text-mean">
+        <div className="card__top-text-mean">
           <span>{wordTranslate}</span>{' '}
-          <span className="card__top-des">{transcription}</span>{' '}
-          <span>
-            <b>i</b>
-          </span>
-        </p>
+          <span className="card__top-des">{transcription}</span>
+          <div
+            aria-hidden={true}
+            onClick={() => void handlerSoundClick()}
+            onKeyPress={() => void handlerSoundClick()}
+            // eslint-disable-next-line global-require
+            style={{ background: `url(${require('../../img/vol.png')})` }}
+            // eslint-enable-next-line global-require
+          >
+            x
+          </div>
+        </div>
         <p className="card__top-center">{`${textMeaning}`}</p>
         <p className="card__top-end">{`${textExample}`}</p>
       </div>

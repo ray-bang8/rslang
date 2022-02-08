@@ -1,10 +1,8 @@
-import {
-  faFacebook,
-  faInstagram,
-  faTwitter
-} from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+
+const fbIcon = require('../../img/fb.svg')
+const instaIcon = require('../../img/insta.svg')
+const twitterIcon = require('../../img/twit.svg')
 
 function Follow() {
   return (
@@ -12,13 +10,13 @@ function Follow() {
       <h5 className="follow__title header-list">Follow Us</h5>
       <div className="follow__icon-wrapper">
         <a className="follow__icon" href="github.com">
-          <FontAwesomeIcon icon={faFacebook} />
+          <img alt="facebook icon" src={fbIcon} />
         </a>
         <a className="follow__icon" href="github.com">
-          <FontAwesomeIcon icon={faTwitter} />
+          <img alt="twitter icon" src={twitterIcon} />
         </a>
         <a className="follow__icon" href="github.com">
-          <FontAwesomeIcon icon={faInstagram} />
+          <img alt="insta icon" src={instaIcon} />
         </a>
       </div>
     </div>
