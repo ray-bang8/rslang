@@ -15,6 +15,14 @@ function Header() {
           src={require('../../img/logo.png')}
           /* eslint-enable global-require */
         />
+        <img
+          alt=""
+          aria-hidden={true}
+          className="bar-icon"
+          onClick={() => setLinkList(!linkList)}
+          onKeyPress={() => setLinkList(!linkList)}
+          src="https://www.clipartmax.com/png/middle/358-3587928_download-burger-menu-icon-orange-clipart-hamburger-hamburger-menu-icon-orange.png"
+        />
         {/* <FontAwesomeIcon
           className="fa fa-bars bar-icon"
           icon={faBars}

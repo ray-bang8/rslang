@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import * as iyut from '../../img/vol.png'
+import volumeIcon from '../../img/volume.svg'
 
 type CardChunk = {
   transcription?: string
@@ -80,13 +80,14 @@ function UpSideCard(props: propCardChunk) {
           <span className="card__top-des">{transcription}</span>
           <div
             aria-hidden={true}
+            className="volume"
             onClick={() => void handlerSoundClick()}
             onKeyPress={() => void handlerSoundClick()}
             // eslint-disable-next-line global-require
-            style={{ background: `url(${require('../../img/vol.png')})` }}
+            // style={{ background: `url(${volumeIcon})` }}
             // eslint-enable-next-line global-require
           >
-            x
+            <img alt="volume" className="volumeIcon" src={`${volumeIcon}`} />
           </div>
         </div>
         <p className="card__top-center">{`${textMeaning}`}</p>

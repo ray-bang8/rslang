@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
-import { VoidExpression } from 'typescript'
+// @ts-ignore
+import bookIcon from '../../img/book.png'
 import EBookNavPages from './EBookNavPages'
 import './navigator.css'
 
@@ -17,7 +18,6 @@ function EBookNavigator(props: NavProps) {
   const handleClickBtn = (e: React.MouseEvent) => {
     const id = (e.target as HTMLElement).getAttribute('id')
     setGr(id)
-    console.log(setGr, 'setPage')
     setPageStatus(!pageStatus)
   }
 
@@ -33,7 +33,10 @@ function EBookNavigator(props: NavProps) {
         ''
       )}
       <ul className="navigator__ul">
-        <li className="nav__icon">a</li>
+        <li className="nav__icon">
+          <img alt="bookLogo" className="bookIcon" src={`${bookIcon}`} />
+          <span className="navigator__title">EBook</span>
+        </li>
         <li>
           <button id="1" onClick={handleClickBtn} type="button">
             Chapter 1

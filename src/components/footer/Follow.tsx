@@ -1,8 +1,10 @@
 import React from 'react'
 
-const fbIcon = require('../../img/fb.svg')
-const instaIcon = require('../../img/insta.svg')
-const twitterIcon = require('../../img/twit.svg')
+// import fbIcon from '../../img/fb.svg'
+
+const fbIcon = require('../../img/fb.png')
+const instaIcon = require('../../img/insta.png')
+const twitterIcon = require('../../img/twit.png')
 
 function Follow() {
   return (
@@ -10,13 +12,13 @@ function Follow() {
       <h5 className="follow__title header-list">Follow Us</h5>
       <div className="follow__icon-wrapper">
         <a className="follow__icon" href="github.com">
-          <img alt="facebook icon" src={fbIcon} />
+          <img alt="facebook icon" className="folllow__i" src={fbIcon} />
         </a>
         <a className="follow__icon" href="github.com">
-          <img alt="twitter icon" src={twitterIcon} />
+          <img alt="twitter icon" className="folllow__i" src={twitterIcon} />
         </a>
         <a className="follow__icon" href="github.com">
-          <img alt="insta icon" src={instaIcon} />
+          <img alt="insta icon" className="folllow__i" src={instaIcon} />
         </a>
       </div>
     </div>

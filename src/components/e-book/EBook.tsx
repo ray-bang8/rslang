@@ -1,26 +1,9 @@
 import React, { useEffect, useState } from 'react'
-// import Footer from '../footer/Footer'
-// import Header from '../header/Header'
+import Footer from '../footer/Footer'
+import Header from '../header/Header'
 import './ebook.css'
 import EBookNavigator from './EBookNavigator'
 import WordCardEbook from './WordCardEbook'
-
-// interface Card {
-//   audio: string
-//   audioExample: string
-//   audioMeaning: string
-//   group: number
-//   id: string | number
-//   image: string
-//   page: number
-//   textExample: string
-//   textExampleTranslate: string
-//   textMeaning: string
-//   textMeaningTranslate: string
-//   transcription: string
-//   word: string
-//   wordTranslate: string
-// }
 
 function EBook() {
   const [data, setData] = useState([
@@ -54,7 +37,6 @@ function EBook() {
       `https://rslang-team48.herokuapp.com/words?group=${group}&page=${page}`
     )
       .then((i) => {
-        console.log(i)
         if (i) return i.json()
         return i
       })
@@ -62,13 +44,13 @@ function EBook() {
         setData(i)
         console.log(page, 'page')
         console.log(group, 'group')
-        console.log(navStatus, 'navStatus')
         console.log(data)
       })
   }, [group, page])
 
   return (
     <div>
+      <Header />
       <div className="cards-wrapper">
         {navStatus ? (
           <EBookNavigator
@@ -81,7 +63,17 @@ function EBook() {
         ) : (
           data.map((el) => <WordCardEbook data={el} key={el.id} />)
         )}
+        <button
+          className="menu-wrapper"
+          onClick={() => {
+            setNavStatus(true)
+          }}
+          type="button"
+        >
+          Menu
+        </button>
       </div>
+      <Footer />
     </div>
   )
 }

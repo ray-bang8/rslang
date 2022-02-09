@@ -6,17 +6,15 @@ function EBookNavPages(props: NavPageProps) {
 
   const handleClickBtn = (e: React.MouseEvent) => {
     const page = (e.target as Element).textContent
-    console.log(setPage)
-
     setPage(Number(page))
     setPageState(false)
     setNavStatus(false)
   }
 
   return (
-    <div className="pages">
+    <div className="nav-pages">
       <h5>Choose page</h5>
-      <ul className="pages__ul">
+      <ul className="nav-pages__ul">
         <li>
           <button onClick={handleClickBtn} type="button">
             1
