@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Footer from '../footer/Footer'
 import Header from '../header/Header'
 import './ebook.css'
+import EBookCurrentPage from './EBookCurrentPage'
 import EBookNavigator from './EBookNavigator'
+import EBookNextPage from './EBookNextPage'
+import EBookPrevPage from './EBookPrevPage'
 import WordCardEbook from './WordCardEbook'
 
 function EBook() {
@@ -71,6 +74,9 @@ function EBook() {
         >
           Menu
         </button>
+        <EBookPrevPage curPage={page} setPrevPage={setPage} />
+        <EBookNextPage curPage={page} setNextPage={setPage} />
+        <EBookCurrentPage curPage={page} />
       </div>
       <Footer />
     </div>

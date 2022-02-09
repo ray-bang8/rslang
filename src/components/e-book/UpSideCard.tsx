@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useEffect, useState } from 'react'
 import volumeIcon from '../../img/volume.svg'
 
@@ -87,8 +88,14 @@ function UpSideCard(props: propCardChunk) {
             <img alt="volume" className="volumeIcon" src={`${volumeIcon}`} />
           </div>
         </div>
-        <p className="card__top-center">{`${textMeaning}`}</p>
-        <p className="card__top-end">{`${textExample}`}</p>
+        <div
+          className="card__top-center"
+          dangerouslySetInnerHTML={{ __html: `${textMeaning}` }}
+        />
+        <div
+          className="card__top-end"
+          dangerouslySetInnerHTML={{ __html: `${textExample}` }}
+        />
       </div>
     </div>
   )
