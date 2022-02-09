@@ -1,7 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import './Auth.css'
+import {
+  Link
+} from 'react-router-dom'
 import { signIn } from './Requests'
 
 function FormLogin() {
@@ -33,7 +37,7 @@ function FormLogin() {
       <div className="no-account">
         Have no account yet?
       </div>
-      <button className="to-register" type="button">Registration</button>
+      <Link to="/auth"><button className="to-register" type="button">Registration</button> </Link>
     </div>
   )
 }

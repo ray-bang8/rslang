@@ -9,7 +9,6 @@ function Auth() {
     <div className="auth">
       <SideBar />
       <FormLogin />
-      {/* <FormRegister /> */}
     </div>
   )
 }
