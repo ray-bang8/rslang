@@ -83,9 +83,6 @@ function UpSideCard(props: propCardChunk) {
             className="volume"
             onClick={() => void handlerSoundClick()}
             onKeyPress={() => void handlerSoundClick()}
-            // eslint-disable-next-line global-require
-            // style={{ background: `url(${volumeIcon})` }}
-            // eslint-enable-next-line global-require
           >
             <img alt="volume" className="volumeIcon" src={`${volumeIcon}`} />
           </div>

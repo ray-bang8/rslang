@@ -53,7 +53,10 @@ function EBookNavPages(props: NavPageProps) {
 export default EBookNavPages
 
 interface NavPageProps {
+  /* eslint-disable no-unused-vars */
   setPage: (value: number) => void
   setNavStatus: (value: boolean) => void
   setPageState: (value: boolean) => void
 }
+
+/* eslint-enable no-unused-vars */

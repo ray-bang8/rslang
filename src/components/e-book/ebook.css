@@ -64,7 +64,6 @@ p {
 
 .card:hover .card__top {
   transform: scale(1.02);
-  /* background-size: 130% !important; */
 }
 
 .card__bottom {

@@ -57,7 +57,6 @@ function EBook() {
             // @ts-ignore
             setGr={setGroup}
             setNavStatus={setNavStatus}
-            // @ts-ignore
             setPages={setPage}
           />
         ) : (

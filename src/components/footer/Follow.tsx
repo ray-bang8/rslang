@@ -1,7 +1,5 @@
 import React from 'react'
 
-// import fbIcon from '../../img/fb.svg'
-
 const fbIcon = require('../../img/fb.png')
 const instaIcon = require('../../img/insta.png')
 const twitterIcon = require('../../img/twit.png')
