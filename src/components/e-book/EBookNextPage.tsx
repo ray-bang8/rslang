@@ -8,12 +8,15 @@ interface PropNextPage {
 function EBookNextPage(props: PropNextPage) {
   const { setNextPage, curPage } = props
 
+  const handleClickBtn = () => {
+    if (curPage !== 30) {
+      setNextPage(curPage + 1)
+      localStorage.setItem('curPage', `${curPage + 1}`)
+    }
+  }
+
   return (
-    <button
-      className="next-page-btn"
-      onClick={() => (curPage !== 30 ? setNextPage(curPage + 1) : ' ')}
-      type="button"
-    >
+    <button className="next-page-btn" onClick={handleClickBtn} type="button">
       Next Page
     </button>
   )

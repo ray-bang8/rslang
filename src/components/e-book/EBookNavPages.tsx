@@ -9,6 +9,8 @@ function EBookNavPages(props: NavPageProps) {
     setPage(Number(page))
     setPageState(false)
     setNavStatus(false)
+    localStorage.setItem('curPage', `${page}`)
+    localStorage.setItem('navStatus', `${false}`)
   }
   const pages: number[] = []
 
@@ -22,7 +24,7 @@ function EBookNavPages(props: NavPageProps) {
       <ul className="nav-pages__ul">
         {pages.map((el) => (
           <li>
-            <button key={30} onClick={handleClickBtn} type="button">
+            <button key={`${el}`} onClick={handleClickBtn} type="button">
               {el}
             </button>
           </li>

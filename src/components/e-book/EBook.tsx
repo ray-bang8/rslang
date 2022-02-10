@@ -27,8 +27,8 @@ function EBook() {
         'Она беспокоилась о том, чтобы не договориться о встрече вовремя',
       textMeaningTranslate:
         'Тревожно означает чувствовать себя обеспокоенным или нервным',
-      wordTranslate: 'озабоченный'
-    }
+      wordTranslate: 'озабоченный',
+    },
   ])
 
   const [group, setGroup] = useState(1)
@@ -36,6 +36,18 @@ function EBook() {
   const [navStatus, setNavStatus] = useState(true)
 
   useEffect(() => {
+    const getPage = localStorage.getItem('curPage')
+    const getGroup = localStorage.getItem('curGroup')
+    const getNavStatus = localStorage.getItem('navStatus')
+
+    if (getNavStatus === 'true') {
+      setNavStatus(true)
+    } else {
+      setNavStatus(false)
+      setGroup(Number(getGroup))
+      setPage(Number(getPage))
+    }
+
     fetch(
       `https://rslang-team48.herokuapp.com/words?group=${group}&page=${page}`
     )
@@ -45,8 +57,6 @@ function EBook() {
       })
       .then((i) => {
         setData(i)
-        console.log(page, 'page')
-        console.log(group, 'group')
         console.log(data)
       })
   }, [group, page])
@@ -69,6 +79,7 @@ function EBook() {
           className="menu-wrapper"
           onClick={() => {
             setNavStatus(true)
+            localStorage.setItem('navStatus', `${true}`)
           }}
           type="button"
         >

@@ -18,6 +18,7 @@ function EBookNavigator(props: NavProps) {
   const handleClickBtn = (e: React.MouseEvent) => {
     const id = (e.target as HTMLElement).getAttribute('id')
     setGr(id)
+    localStorage.setItem('curGroup', `${id}`)
     setPageStatus(!pageStatus)
   }
 
