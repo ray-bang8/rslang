@@ -1,9 +1,12 @@
 import React from 'react'
+import {
+  Link
+} from 'react-router-dom'
 
 function AuthButton() {
   return (
     <div className="auth-block">
-      <button type="button">Sign Up</button>
+      <Link to="/login"><button type="button">Sign Up</button></Link>
     </div>
   )
 }

@@ -1,23 +1,26 @@
 import React from 'react'
+import {
+  NavLink
+} from 'react-router-dom'
 
 function Links(props: any) {
   const { linkList } = props
   return (
     <ul className={linkList ? 'active nav__ul' : ' nav__ul'}>
       <li className="nav__ul-li">
-        <a href="a">Home</a>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li className="nav__ul-li">
-        <a href="a">E-book</a>
+        <NavLink to="/e-book">E-book</NavLink>
       </li>
       <li className="nav__ul-li">
-        <a href="a">Games</a>
+        <NavLink to="/games">Games</NavLink>
       </li>
       <li className="nav__ul-li">
-        <a href="a">Statistics</a>
+        <NavLink to="/statistics">Statistics</NavLink>
       </li>
       <li className="nav__ul-li">
-        <a href="a">About</a>
+        <NavLink to="/about">About</NavLink>
       </li>
     </ul>
   )

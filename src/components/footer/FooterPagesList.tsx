@@ -1,4 +1,7 @@
 import React from 'react'
+import {
+  NavLink
+} from 'react-router-dom'
 
 function FooterPagesList() {
   return (
@@ -6,16 +9,16 @@ function FooterPagesList() {
       <ul className="pages">
         <li className="pages__title header-list">Pages</li>
         <li className="pages__li">
-          <a href="pages">Home</a>
+          <NavLink to="/main">Home</NavLink>
         </li>
         <li className="pages__li">
-          <a href="pages">E-book</a>
+          <NavLink to="/e-book">E-book</NavLink>
         </li>
         <li className="pages__li">
-          <a href="pages">Games</a>
+          <NavLink to="/games">Games</NavLink>
         </li>
         <li className="pages__li">
-          <a href="pages">Statistics</a>
+          <NavLink to="/statistics">Statistics</NavLink>
         </li>
       </ul>
     </div>
