@@ -1,14 +1,13 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
-// @ts-ignore
-import bookIcon from '../../img/book.png'
+import React, { useState, Dispatch, SetStateAction } from 'react'
 import EBookNavPages from './EBookNavPages'
 import './navigator.css'
 
+const bookIcon = require('../../img/book.png')
+
 interface NavProps {
-  setPages: (value: number) => void
-  setGr: (value: number | string | null) => void
-  setNavStatus: (value: boolean) => void
+  setPages: Dispatch<SetStateAction<number>>
+  setGr: Dispatch<SetStateAction<number>>
+  setNavStatus: Dispatch<SetStateAction<boolean>>
 }
 
 function EBookNavigator(props: NavProps) {
@@ -17,7 +16,7 @@ function EBookNavigator(props: NavProps) {
 
   const handleClickBtn = (e: React.MouseEvent) => {
     const id = (e.target as HTMLElement).getAttribute('id')
-    setGr(id)
+    setGr(Number(id))
     localStorage.setItem('curGroup', `${id}`)
     setPageStatus(!pageStatus)
   }
@@ -74,5 +73,3 @@ function EBookNavigator(props: NavProps) {
 }
 
 export default EBookNavigator
-
-/* eslint-enable no-unused-vars */

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 
 interface PropNextPage {
-  setNextPage: (value: number) => void
+  setNextPage: Dispatch<SetStateAction<number>>
   curPage: number
 }
 

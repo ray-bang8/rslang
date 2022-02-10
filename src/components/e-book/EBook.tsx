@@ -11,24 +11,9 @@ import WordCardEbook from './WordCardEbook'
 function EBook() {
   const [data, setData] = useState([
     {
-      id: '5e9f5ee35eb9e72bc21af70c',
-      group: 1,
-      page: 1,
-      word: 'anxious',
-      image: 'files/02_0621.jpg',
-      audio: 'files/02_0621.mp3',
-      audioMeaning: 'files/02_0621_meaning.mp3',
-      audioExample: 'files/02_0621_example.mp3',
-      textMeaning: '<i>Anxious</i> means feeling worried or nervous.',
-      textExample:
-        'She was <b>anxious</b> about not making her appointment on time.',
-      transcription: '[ǽŋkʃəs]',
-      textExampleTranslate:
-        'Она беспокоилась о том, чтобы не договориться о встрече вовремя',
-      textMeaningTranslate:
-        'Тревожно означает чувствовать себя обеспокоенным или нервным',
-      wordTranslate: 'озабоченный',
-    },
+      word: 'Loading',
+      id: 0
+    }
   ])
 
   const [group, setGroup] = useState(1)
@@ -36,6 +21,7 @@ function EBook() {
   const [navStatus, setNavStatus] = useState(true)
 
   useEffect(() => {
+    const basicURL = 'https://rslang-team48.herokuapp.com/'
     const getPage = localStorage.getItem('curPage')
     const getGroup = localStorage.getItem('curGroup')
     const getNavStatus = localStorage.getItem('navStatus')
@@ -48,16 +34,13 @@ function EBook() {
       setPage(Number(getPage))
     }
 
-    fetch(
-      `https://rslang-team48.herokuapp.com/words?group=${group}&page=${page}`
-    )
-      .then((i) => {
-        if (i) return i.json()
-        return i
-      })
+    fetch(`${basicURL}words?group=${group}&page=${page}`)
+      .then((i) => i.json())
       .then((i) => {
         setData(i)
-        console.log(data)
+      })
+      .catch((err) => {
+        throw err
       })
   }, [group, page])
 
@@ -75,6 +58,7 @@ function EBook() {
         ) : (
           data.map((el) => <WordCardEbook data={el} key={el.id} />)
         )}
+
         <button
           className="menu-wrapper"
           onClick={() => {

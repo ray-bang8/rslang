@@ -53,7 +53,7 @@
 .bar-icon {
   color: #fe5244;
   width: 70px;
-  display: none !important;
+  display: none;
   cursor: pointer;
   transition: 0.3s;
   filter: saturate(1.7);
@@ -65,7 +65,7 @@
 
 @media (max-width: 767px) {
   .bar-icon {
-    display: block !important;
+    display: block;
     z-index: 111;
   }
 

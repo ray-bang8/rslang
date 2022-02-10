@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import './navigator.css'
 
 function EBookNavPages(props: NavPageProps) {
@@ -12,10 +12,15 @@ function EBookNavPages(props: NavPageProps) {
     localStorage.setItem('curPage', `${page}`)
     localStorage.setItem('navStatus', `${false}`)
   }
-  const pages: number[] = []
+  const pages: Array<{ id: number; num: number }> = []
+  const maxSizePages = 31
 
-  for (let i = 0; i < 31; i++) {
-    pages.push(i)
+  for (let i = 0; i < maxSizePages; i++) {
+    const pageObject = {
+      id: +`68245${i}`,
+      num: i + 1
+    }
+    pages.push(pageObject)
   }
 
   return (
@@ -23,10 +28,8 @@ function EBookNavPages(props: NavPageProps) {
       <h5>Choose page</h5>
       <ul className="nav-pages__ul">
         {pages.map((el) => (
-          <li>
-            <button key={`${el}`} onClick={handleClickBtn} type="button">
-              {el}
-            </button>
+          <li key={el.id} onClick={handleClickBtn} role="presentation">
+            <button type="button">{el.num}</button>
           </li>
         ))}
       </ul>
@@ -37,10 +40,7 @@ function EBookNavPages(props: NavPageProps) {
 export default EBookNavPages
 
 interface NavPageProps {
-  /* eslint-disable no-unused-vars */
-  setPage: (value: number) => void
-  setNavStatus: (value: boolean) => void
-  setPageState: (value: boolean) => void
+  setPage: Dispatch<SetStateAction<number>>
+  setNavStatus: Dispatch<SetStateAction<boolean>>
+  setPageState: Dispatch<SetStateAction<boolean>>
 }
-
-/* eslint-enable no-unused-vars */

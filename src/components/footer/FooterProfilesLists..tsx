@@ -6,9 +6,6 @@ function FooterProfilesList() {
       <ul className="profiles">
         <li className="profiles__title header-list">Profiles</li>
         <li className="profiles__li">
-          <a href="github.com">@agitaev</a>
-        </li>
-        <li className="profiles__li">
           <a href="github.com">@ray-bang8</a>
         </li>
         <li className="profiles__li">

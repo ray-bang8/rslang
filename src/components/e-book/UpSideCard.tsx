@@ -1,6 +1,6 @@
-/* eslint-disable react/no-danger */
 import React, { useEffect, useState } from 'react'
 import volumeIcon from '../../img/volume.svg'
+import EBookSoundPlay from './EBookSoundPlay'
 
 type CardChunk = {
   transcription?: string
@@ -31,7 +31,7 @@ function UpSideCard(props: propCardChunk) {
     transcription,
     textMeaning,
     textExample,
-    image
+    image,
   } = card
 
   const [img, setImg] = useState('')
@@ -53,17 +53,7 @@ function UpSideCard(props: propCardChunk) {
     sound.src = soundSrc
 
     sound.play().then(() => {
-      setTimeout(() => {
-        sound.src = `${mainUrl}${audioMeaning}`
-
-        sound.play().then(() => {
-          setTimeout(() => {
-            sound.src = `${mainUrl}${audioExample}`
-
-            sound.play()
-          }, sound.duration * 1000)
-        })
-      }, sound.duration * 1000)
+      EBookSoundPlay(sound, { mainUrl, audioMeaning, audioExample })
     })
   }
 
@@ -77,7 +67,7 @@ function UpSideCard(props: propCardChunk) {
       <div className="card__top-text">
         <h3 className="card__top-text-title">{word}</h3>
         <div className="card__top-text-mean">
-          <span>{wordTranslate}</span>{' '}
+          <span>{wordTranslate}</span>
           <span className="card__top-des">{transcription}</span>
           <div
             aria-hidden={true}
@@ -88,6 +78,7 @@ function UpSideCard(props: propCardChunk) {
             <img alt="volume" className="volumeIcon" src={`${volumeIcon}`} />
           </div>
         </div>
+        {/*  eslint-disable react/no-danger  */}
         <div
           className="card__top-center"
           dangerouslySetInnerHTML={{ __html: `${textMeaning}` }}
@@ -97,6 +88,7 @@ function UpSideCard(props: propCardChunk) {
           dangerouslySetInnerHTML={{ __html: `${textExample}` }}
         />
       </div>
+      {/*  eslint-enable react/no-danger  */}
     </div>
   )
 }

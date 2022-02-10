@@ -27,6 +27,11 @@ p {
   overflow: hidden;
   box-shadow: black 3px 3px 8px 1px;
   transition: 0.6s;
+  position: relative;
+}
+
+.card.aggregated {
+  border: yellow 3px solid;
 }
 
 .card__top {
@@ -186,6 +191,47 @@ p {
   border-bottom-left-radius: 0;
   background: tomato;
   color: white;
+}
+
+.card__word-btns {
+  position: absolute;
+  left: -120%;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.card.active .card__word-btns {
+  padding: 0 2%;
+  position: absolute;
+  left: 0 !important;
+  top: 1% !important;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__set-btn,
+.card__delete-btn {
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.card__set-btn:hover .card__btn,
+.card__delete-btn:hover .card__btn {
+  transform: scale(1.2);
+}
+
+.card__btn {
+  width: 33px;
+  height: 33px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.card__btn:hover {
+  filter: drop-shadow(2px 4px 6px black) saturate(2);
 }
 
 @media (max-width: 1400px) {
