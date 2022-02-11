@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../footer/Footer'
 import Header from '../header/Header'
-import './ebook.css'
+import './ebook.scss'
 import EBookCurrentPage from './EBookCurrentPage'
 import EBookNavigator from './EBookNavigator'
 import EBookNextPage from './EBookNextPage'
@@ -12,8 +12,8 @@ function EBook() {
   const [data, setData] = useState([
     {
       word: 'Loading',
-      id: 0,
-    },
+      id: 0
+    }
   ])
 
   const [group, setGroup] = useState(1)
