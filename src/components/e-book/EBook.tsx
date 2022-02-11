@@ -12,8 +12,8 @@ function EBook() {
   const [data, setData] = useState([
     {
       word: 'Loading',
-      id: 0
-    }
+      id: 0,
+    },
   ])
 
   const [group, setGroup] = useState(1)
@@ -50,7 +50,6 @@ function EBook() {
       <div className="cards-wrapper">
         {navStatus ? (
           <EBookNavigator
-            // @ts-ignore
             setGr={setGroup}
             setNavStatus={setNavStatus}
             setPages={setPage}
@@ -72,6 +71,7 @@ function EBook() {
         <EBookPrevPage curPage={page} setPrevPage={setPage} />
         <EBookNextPage curPage={page} setNextPage={setPage} />
         <EBookCurrentPage curPage={page} />
+        <div className="blured-opacity"> </div>
       </div>
       <Footer />
     </div>

@@ -96,14 +96,13 @@ footer {
   color: #fe7367;
 }
 
-.folllow__i {
-  width: 25px;
-  height: 25px;
+.follow__i {
+  font-size: 22px;
   transition: 0.2s;
   border-radius: 5px;
 }
 
-.folllow__i:hover {
+.follow__i:hover {
   transform: scale(1.1);
 }
 

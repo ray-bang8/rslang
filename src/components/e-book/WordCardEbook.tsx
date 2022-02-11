@@ -8,7 +8,7 @@ interface propCard {
   data: Card
 }
 const userData = {
-  message: 'Authenticated',
+  message: 'Authenticated'
 }
 localStorage.setItem('userData', JSON.stringify(userData))
 

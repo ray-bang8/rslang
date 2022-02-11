@@ -1,8 +1,10 @@
+import {
+  faInstagram,
+  faFacebookSquare,
+  faTwitterSquare
+} from '@fortawesome/fontawesome-free-brands'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-
-const fbIcon = require('../../img/fb.png')
-const instaIcon = require('../../img/insta.png')
-const twitterIcon = require('../../img/twit.png')
 
 function Follow() {
   return (
@@ -10,13 +12,16 @@ function Follow() {
       <h5 className="follow__title header-list">Follow Us</h5>
       <div className="follow__icon-wrapper">
         <a className="follow__icon" href="github.com">
-          <img alt="facebook icon" className="folllow__i" src={fbIcon} />
+          {/*  @ts-ignore */}
+          <FontAwesomeIcon className="follow__i" icon={faFacebookSquare} />
         </a>
         <a className="follow__icon" href="github.com">
-          <img alt="twitter icon" className="folllow__i" src={twitterIcon} />
+          {/*  @ts-ignore */}
+          <FontAwesomeIcon className="follow__i" icon={faInstagram} />
         </a>
         <a className="follow__icon" href="github.com">
-          <img alt="insta icon" className="folllow__i" src={instaIcon} />
+          {/*  @ts-ignore */}
+          <FontAwesomeIcon className="follow__i" icon={faTwitterSquare} />
         </a>
       </div>
     </div>

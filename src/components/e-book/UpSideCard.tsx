@@ -31,7 +31,7 @@ function UpSideCard(props: propCardChunk) {
     transcription,
     textMeaning,
     textExample,
-    image,
+    image
   } = card
 
   const [img, setImg] = useState('')

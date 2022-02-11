@@ -125,7 +125,7 @@ p {
 /*  menu left side */
 
 .menu-wrapper {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
@@ -145,17 +145,17 @@ p {
   background-color: tomato;
   cursor: pointer;
   /* height: 60px; */
-  width: 90px;
+  /* width: 90px; */
 }
 
 .next-page-btn:hover,
 .prev-page-btn:hover {
-  width: 70px;
+  width: 50px;
 }
 
 .next-page-btn,
 .prev-page-btn {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 60%;
   transform: translateY(-50%);
@@ -232,6 +232,25 @@ p {
 
 .card__btn:hover {
   filter: drop-shadow(2px 4px 6px black) saturate(2);
+}
+
+.blured-opacity {
+  background-color: #7e7e7e;
+  backdrop-filter: blur(5px);
+  position: fixed;
+  left: -36px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 36%;
+  width: 15%;
+  position: fixed;
+  left: -36px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 36%;
+  width: 15%;
+  border-radius: 60%;
+  filter: blur(1px);
 }
 
 @media (max-width: 1400px) {
