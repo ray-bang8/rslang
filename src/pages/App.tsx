@@ -1,8 +1,9 @@
 import React from 'react'
 import '../styles/App.css'
-// import AboutTeamPage from './AboutTeamPage'
-import AuthPage from './AuthPage'
+// import AuthPage from './AuthPage'
+import EBookPage from './EBookPage'
 import MainPage from './MainPage'
+// import AboutTeamPage from './AboutTeamPage'
 
 
 function App() {
@@ -11,8 +12,10 @@ function App() {
       {/* <AboutTeamPage /> */}
       {/* <AuthPage /> */}
       <MainPage />
+      <EBookPage />
     </div>
   )
 }
 
 export default App
+

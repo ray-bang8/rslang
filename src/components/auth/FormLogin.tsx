@@ -1,8 +1,11 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import './Auth.css'
 import { signIn } from './Requests'
+
+const timesIcon = faTimes as IconProp
 
 function FormLogin() {
   const baseUrl: string = 'https://rslang-team48.herokuapp.com/'
@@ -20,20 +23,30 @@ function FormLogin() {
   return (
     <div className="form-container">
       <div className="home-button">
-        <FontAwesomeIcon icon={faTimes} size="2x" />
+        <FontAwesomeIcon icon={timesIcon} size="2x" />
       </div>
-      <div className="title">
-        Welcome
-      </div>
+      <div className="title">Welcome</div>
       <form className="form" onSubmit={handleLoginSubmit}>
-        <input className="email-sign-in" onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" value={email} />
-        <input className="password-sign-in" onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" value={password} />
+        <input
+          className="email-sign-in"
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          type="email"
+          value={email}
+        />
+        <input
+          className="password-sign-in"
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          type="password"
+          value={password}
+        />
         <input className="login" type="submit" value="Login" />
       </form>
-      <div className="no-account">
-        Have no account yet?
-      </div>
-      <button className="to-register" type="button">Registration</button>
+      <div className="no-account">Have no account yet?</div>
+      <button className="to-register" type="button">
+        Registration
+      </button>
     </div>
   )
 }
