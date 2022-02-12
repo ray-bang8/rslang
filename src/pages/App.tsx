@@ -1,16 +1,17 @@
 import React from 'react'
 import '../styles/App.css'
 // import AboutTeamPage from './AboutTeamPage'
-import AuthPage from './AuthPage'
-import MainPage from './MainPage'
-
+// import AuthPage from './AuthPage'
+import EBookPage from './EBookPage'
+// import MainPage from './MainPag
 
 function App() {
   return (
     <div className="App">
       {/* <AboutTeamPage /> */}
-      <AuthPage />
-      <MainPage />
+      {/* <AuthPage /> */}
+      {/* <MainPage /> */}
+      <EBookPage />
     </div>
   )
 }

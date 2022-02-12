@@ -1,0 +1,280 @@
+* {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3%;
+  flex-wrap: wrap;
+  background: #ffdef9;
+  width: 100%;
+}
+
+.card {
+  width: 30%;
+  height: 380px;
+  margin: 0;
+  margin-bottom: 3%;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: rgb(236, 222, 205);
+  overflow: hidden;
+  box-shadow: black 3px 3px 8px 1px;
+  transition: 0.6s;
+  position: relative;
+}
+
+.card.aggregated {
+  border: yellow 3px solid;
+}
+
+.card__top {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-end;
+  position: relative;
+  padding: 5%;
+  transition: 0.1s;
+  background-position: center;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+
+.card:hover .card__top {
+  transform: scale(1.02);
+}
+
+.card__bottom {
+  text-align: end;
+  padding: 1% 5%;
+  height: 40%;
+}
+
+.card__blur {
+  background-image: linear-gradient(transparent, rgba(177, 195, 211, 0.767));
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.card__top-text {
+  width: 100%;
+  z-index: 100;
+  text-align: end;
+}
+
+.card__top-des {
+  margin: 0 2%;
+}
+
+.card__top-text-title {
+  font-size: 33px;
+  /* margin-right: 10px; */
+}
+
+.card__top-text-mean {
+  font-size: 22px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.card__top-center {
+  margin-top: 10px;
+}
+
+.card__top-end {
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.card__bottom-hr {
+  margin-bottom: 2%;
+}
+
+.volumeIcon:hover {
+  color: #fe5244;
+  transform: scale(1.2);
+}
+
+.volume {
+  display: inline;
+}
+
+.volumeIcon {
+  width: 37px;
+  cursor: pointer;
+  transition: 0.1s;
+  outline: none;
+  filter: contrast(3);
+}
+
+/*  menu left side */
+
+.menu-wrapper {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top-right-radius: 85%;
+  border-bottom-right-radius: 85%;
+  height: 51px;
+  width: 65px;
+  transition: 0.3s;
+  padding: 0;
+  z-index: 10;
+  border: none;
+}
+
+.menu-wrapper:hover,
+.next-page-btn:hover,
+.prev-page-btn:hover {
+  background-color: tomato;
+  cursor: pointer;
+  /* height: 60px; */
+  /* width: 90px; */
+}
+
+.next-page-btn:hover,
+.prev-page-btn:hover {
+  width: 50px;
+}
+
+.next-page-btn,
+.prev-page-btn {
+  position: fixed;
+  left: 0;
+  top: 60%;
+  transform: translateY(-50%);
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  height: 38px;
+  width: 46px;
+  transition: 0.3s;
+  padding: 0;
+  z-index: 10;
+  border: none;
+}
+
+.prev-page-btn {
+  top: 40%;
+}
+
+/* current page window */
+
+.current-page {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 10%;
+  height: 7%;
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #efefef;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background: tomato;
+  color: white;
+}
+
+.card__word-btns {
+  position: absolute;
+  left: -120%;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.card.active .card__word-btns {
+  padding: 0 2%;
+  position: absolute;
+  left: 0 !important;
+  top: 1% !important;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__set-btn,
+.card__delete-btn {
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.card__set-btn:hover .card__btn,
+.card__delete-btn:hover .card__btn {
+  transform: scale(1.2);
+}
+
+.card__btn {
+  width: 33px;
+  height: 33px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.card__btn:hover {
+  filter: drop-shadow(2px 4px 6px black) saturate(2);
+}
+
+.blured-opacity {
+  background-color: #7e7e7e;
+  backdrop-filter: blur(5px);
+  position: fixed;
+  left: -36px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 36%;
+  width: 15%;
+  position: fixed;
+  left: -36px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 36%;
+  width: 15%;
+  border-radius: 60%;
+  filter: blur(1px);
+}
+
+@media (max-width: 1400px) {
+  .card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .card {
+    height: 447px;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 90%;
+  }
+
+  .card__top {
+    height: 75%;
+  }
+
+  .card__bottom {
+    height: 25%;
+  }
+}
