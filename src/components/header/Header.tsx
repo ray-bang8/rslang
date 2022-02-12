@@ -17,11 +17,11 @@ function Header() {
           src={require('../../img/logo.png')}
           /* eslint-enable global-require */
         />
-        <FontAwesomeIcon
+        {/* <FontAwesomeIcon
           className="fa fa-bars bar-icon"
           icon={faBars}
           onClick={() => setLinkList(!linkList)}
-        />
+        /> */}
         <Links linkList={linkList} setLinkList={setLinkList} />
         <AuthButton />
       </nav>
