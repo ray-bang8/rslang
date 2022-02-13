@@ -52,12 +52,20 @@
 
 .bar-icon {
   color: #fe5244;
-  display: none !important;
+  width: 70px;
+  display: none;
+  cursor: pointer;
+  transition: 0.3s;
+  filter: saturate(1.7);
+}
+
+.bar-icon:hover {
+  transform: scale(1.2);
 }
 
 @media (max-width: 767px) {
   .bar-icon {
-    display: block !important;
+    display: block;
     z-index: 111;
   }
 
@@ -75,6 +83,7 @@
     padding: 0;
     transition: 0.5s ease-out;
     box-sizing: border-box;
+    z-index: 999;
   }
 
   .nav__ul.active {

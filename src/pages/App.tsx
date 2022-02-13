@@ -6,6 +6,7 @@ import {
 import FormRegister from '../components/auth/FormRegister'
 import AboutTeamPage from './AboutTeamPage'
 import AuthPage from './AuthPage'
+import EBookPage from './EBookPage'
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           {/* <Route element={<AuthPage />} path="/" /> */}
           <Route element={<FormRegister />} path="/auth" />
           <Route element={<AuthPage />} path="/login" />
-          {/* <Route element={} path="/e-book" /> */}
+          <Route element={<EBookPage />} path="/e-book" />
           {/* <Route element={} path="/games" /> */}
           {/* <Route element={} path="/statistics" /> */}
           <Route element={<AboutTeamPage />} path="/" />
