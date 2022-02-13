@@ -1,7 +1,7 @@
 import React from 'react'
 import LeftSide from './LeftSide'
 import RightSide from './RightSide'
-import './footer.css'
+import './footer.scss'
 
 function Footer() {
   return (
