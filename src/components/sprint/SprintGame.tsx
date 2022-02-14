@@ -1,4 +1,8 @@
+import { faArrowAltCircleDown } from '@fortawesome/fontawesome-free-solid'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState, KeyboardEventHandler } from 'react'
+import Header from '../header/Header'
 import SprintAddScore from './SprintAddScore'
 import SprintCheckResult from './SprintCheckResult'
 import SprintDeleteQuestion from './SprintDeleteQuestion'
@@ -7,6 +11,8 @@ import SprintResult from './SprintResult'
 import SprintSetTime from './SprintSetTime'
 import getRandomWord from './getRandomWord'
 import './sprint.scss'
+
+const repeatIcon = faArrowAltCircleDown as IconProp
 
 function SprintGame() {
   const [gameStatus, setGameStatus] = useState(false)
@@ -18,11 +24,11 @@ function SprintGame() {
   const [currentQuestion, setCurrentQuestion] = useState('')
   const [score, setScore] = useState(0)
   const [scoreLevel, setScoreLevel] = useState(0)
-  // const results: Array<Object> = []
+  const [scoreAddAnimation, setScoreAddAnimation] = useState(false)
   const [results, setResults] = useState([])
   const [end, setEnd] = useState(false)
 
-  const setNewWord = async(data: Array<Word>) => {
+  const setNewWord = async (data: Array<Word>) => {
     if (data.length < 1) {
       setEnd(true)
     }
@@ -81,17 +87,31 @@ function SprintGame() {
 
       const resultObject = {
         ...currentObject,
-        result: res === true ? 'false' : 'true'
+        result: res === true ? 'false' : 'true',
       }
       // @ts-ignore
-      setResults((oldArray) => [...oldArray, resultObject])
-      console.log(results, 'result')
+      // setResults((oldArray) => [...oldArray, resultObject])
+      results.push(resultObject)
+      console.log(currentObject, 'result')
 
       if (res) {
         setScoreLevel(0)
-        console.log('seyscoreLeveled')
+        const audio = new Audio()
+        audio.src =
+          'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
+        audio.play()
       } else {
-        SprintAddScore(score, setScore, scoreLevel, setScoreLevel)
+        SprintAddScore(
+          score,
+          setScore,
+          scoreLevel,
+          setScoreLevel,
+          setScoreAddAnimation
+        )
+        const audio = new Audio()
+        audio.src =
+          'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
+        audio.play()
       }
     }
     handleNextWord()
@@ -106,41 +126,112 @@ function SprintGame() {
 
       const resultObject = {
         ...currentObject,
-        result: res
+        result: res,
       }
-      console.log(resultObject);
+      console.log(resultObject, 'result')
 
       // @ts-ignore
-      (results as Array<Word>).push(resultObject)
-      console.log(results, 'result')
+      ;(results as Array<Word>).push(resultObject)
+      // console.log(results, 'result')
 
       if (res) {
-        SprintAddScore(score, setScore, scoreLevel, setScoreLevel)
+        SprintAddScore(
+          score,
+          setScore,
+          scoreLevel,
+          setScoreLevel,
+          setGameStatus
+        )
+        const audio = new Audio()
+        audio.src =
+          'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
+        audio.play()
       } else {
         setScoreLevel(0)
+        const audio = new Audio()
+        audio.src =
+          'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
+        audio.play()
       }
     }
 
     handleNextWord()
   }
 
-  function handleKeyBtn(event: KeyboardEventHandler<HTMLDivElement>) {
-    console.log(event)
+  // function handleKeyBtn(
+  //   event: KeyboardEventHandler<HTMLDivElement> | KeyboardEvent
+  // ) {
+  //   // @ts-ignore
+  //   if (event.key === 'ArrowRight') {
+  //     handleTruebtn()
+  //   }
+  //   // @ts-ignore
+  //   if (event.key === 'ArrowLeft') {
+  //     console.log(currentObject)
+
+  //     if (currentObject) {
+  //       const res = SprintCheckResult(
+  //         currentObject as Word,
+  //         currentQuestion as string
+  //       )
+
+  //       const resultObject = {
+  //         ...currentObject,
+  //         result: res === true ? 'false' : 'true',
+  //       }
+  //       // @ts-ignore
+  //       // setResults((oldArray) => [...oldArray, resultObject])
+  //       results.push(resultObject)
+  //       console.log(currentObject, 'result')
+
+  //       if (res) {
+  //         setScoreLevel(0)
+  //         console.log('seyscoreLeveled')
+  //       } else {
+  //         SprintAddScore(
+  //           score,
+  //           setScore,
+  //           scoreLevel,
+  //           setScoreLevel,
+  //           setScoreAddAnimation
+  //         )
+  //       }
+  //     }
+  //     handleNextWord()
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   if (gameStatus) {
+  //     // document.addEventListener('keydown', (e) => handleKeyBtn(e))
+  //     // console.log('i')
+  //     // document.removeEventListener('keydown', (e) => handleKeyBtn(e))
+  //   }
+  // }, [gameStatus])
+
+  function handleRepeatBtn() {
+    setGameStatus(false)
+    setScore(0)
+    setScoreLevel(0)
+    const randomWord = getRandomWord(data) || { word: 'Loading' }
+    if (randomWord) {
+      setNewWord(data)
+    }
+    setEnd(true)
+
+    // set question
+    const randomQuestion = getRandomWord(data)
+    setCurrentQuestion((randomQuestion as Word).wordTranslate)
   }
 
   return (
     <div>
-      <div
-        className={gameStatus ? 'sprint-body active' : 'sprint-body'}
-        // @ts-ignore
-        onKeyPress={handleKeyBtn}
-        role="presentation"
-      >
+      <Header />
+      <div className={gameStatus ? 'sprint-body active' : 'sprint-body'}>
         <div className="sprint">
           <div className="sprint__time">
             <SprintSetTime gameStatus={gameStatus} setEnd={setEnd} />
           </div>
-          ``
           <div className="sprint__text">
             <h4 className="sprint__question">{currentWord}</h4>
             <p className="sprint__answer">{currentQuestion}</p>
@@ -156,6 +247,18 @@ function SprintGame() {
           {end}
           <span className="sprint__score">{`${score}`}</span>
         </div>
+        <div
+          className={
+            scoreAddAnimation ? 'score-animation active' : 'score-animation'
+          }
+          onClick={handleRepeatBtn}
+          role="presentation"
+        >
+          {/* eslint-disable-next-line no-nested-ternary */}
+          {scoreLevel === 1 ? '20+' : scoreLevel === 2 ? '40+' : '60+'}{' '}
+          {/* eslint-enable-next-line no-nested-ternary */}
+        </div>
+        <FontAwesomeIcon className="repeat-icon" icon={repeatIcon} />
         {end === true ? <SprintResult results={results} /> : ''}
       </div>
       {gameStatus ? (

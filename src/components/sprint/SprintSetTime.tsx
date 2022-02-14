@@ -1,10 +1,10 @@
-import React, {
-  useEffect, useState, Dispatch, SetStateAction
-} from 'react'
+import React, { useEffect, useState, Dispatch, SetStateAction } from 'react'
 
 function SprintSetTime({ setEnd, gameStatus }: PropTime) {
   const [time, setTime] = useState(30)
   useEffect(() => {
+    console.log(gameStatus)
+
     if (gameStatus) {
       if (time > 0) {
         setTimeout(() => {
@@ -14,7 +14,7 @@ function SprintSetTime({ setEnd, gameStatus }: PropTime) {
         setEnd(true)
       }
     }
-  }, [time])
+  }, [time, gameStatus])
   return <div className="time">{time}</div>
 }
 

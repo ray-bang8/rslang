@@ -176,6 +176,38 @@
   cursor: pointer;
 }
 
+.score-animation {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  color: gold;
+  font-weight: 900;
+  transition: 0.5s;
+  font-size: 20px;
+  opacity: 0;
+}
+
+.score-animation.active {
+  font-size: 58px;
+  opacity: 1;
+}
+
+.repeat-icon {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: 2%;
+  transform: translateY(-50%);
+  font-size: 45px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.repeat-icon:hover {
+  transform: scale(1.1);
+  color: tomato;
+}
+
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
