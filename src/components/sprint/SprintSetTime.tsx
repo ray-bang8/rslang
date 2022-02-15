@@ -3,9 +3,8 @@ import React, {
 } from 'react'
 
 function SprintSetTime({ setEnd, gameStatus }: PropTime) {
-  const [time, setTime] = useState(30)
+  const [time, setTime] = useState(60)
   useEffect(() => {
-    console.log(gameStatus)
 
     if (gameStatus) {
       if (time > 0) {

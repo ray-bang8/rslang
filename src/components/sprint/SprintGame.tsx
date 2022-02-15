@@ -2,6 +2,7 @@ import { faArrowAltCircleDown } from '@fortawesome/fontawesome-free-solid'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
+import Footer from '../footer/Footer'
 import Header from '../header/Header'
 import SprintAddScore from './SprintAddScore'
 import SprintCheckResult from './SprintCheckResult'
@@ -48,7 +49,6 @@ function SprintGame() {
         `https://rslang-team48.herokuapp.com/words?group=${group}&page=${randomPage}`
       )
       const resData = await res.json()
-      console.log(resData)
 
       await setData(resData)
 
@@ -90,9 +90,7 @@ function SprintGame() {
         result: res === true ? 'false' : 'true'
       }
       // @ts-ignore
-      // setResults((oldArray) => [...oldArray, resultObject])
-      results.push(resultObject)
-      console.log(currentObject, 'result')
+      results.push((resultObject))
 
       if (res) {
         setScoreLevel(0)
@@ -205,6 +203,7 @@ function SprintGame() {
   // }, [gameStatus])
 
   function handleRepeatBtn() {
+    window.location.reload()
     setGameStatus(false)
     setScore(0)
     setScoreLevel(0)
@@ -246,7 +245,7 @@ function SprintGame() {
           className={
             scoreAddAnimation ? 'score-animation active' : 'score-animation'
           }
-          onClick={handleRepeatBtn}
+          onClick={() => handleRepeatBtn()}
           role="presentation"
         >
           {/* eslint-disable-next-line no-nested-ternary */}
@@ -266,6 +265,7 @@ function SprintGame() {
           setScoreLevel={setScoreLevel}
         />
       )}
+      <Footer />
     </div>
   )
 }
