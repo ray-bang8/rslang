@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import leftBgMain from '../img/left.png'
-import schoolImg from '../img/mainImg.png'
-import rightBgMain from '../img/right.png'
-import '../styles/mainPage.scss'
+import leftBgMain from '../../img/left.png'
+import schoolImg from '../../img/mainImg.png'
+import rightBgMain from '../../img/right.png'
+import '../../styles/mainPage.scss'
 
 export default function mainSection() {
   return (

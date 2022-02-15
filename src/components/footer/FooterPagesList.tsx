@@ -7,10 +7,10 @@ function FooterPagesList() {
       <ul className="pages">
         <li className="pages__title header-list">Pages</li>
         <li className="pages__li">
-          <NavLink to="/main">Home</NavLink>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li className="pages__li">
-          <NavLink to="/e-book">E-book</NavLink>
+          <NavLink to="/ebook">E-book</NavLink>
         </li>
         <li className="pages__li">
           <NavLink to="/games">Games</NavLink>
