@@ -1,7 +1,7 @@
 import { faArrowAltCircleDown } from '@fortawesome/fontawesome-free-solid'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useState, KeyboardEventHandler } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../header/Header'
 import SprintAddScore from './SprintAddScore'
 import SprintCheckResult from './SprintCheckResult'
@@ -17,7 +17,7 @@ const repeatIcon = faArrowAltCircleDown as IconProp
 function SprintGame() {
   const [gameStatus, setGameStatus] = useState(false)
   const [group, setGroup] = useState(0)
-  const [page, setPage] = useState(0)
+  const [page] = useState(0)
   const [data, setData] = useState([])
   const [currentObject, setCurrentObject] = useState({})
   const [currentWord, setCurrentWord] = useState('')
@@ -25,10 +25,10 @@ function SprintGame() {
   const [score, setScore] = useState(0)
   const [scoreLevel, setScoreLevel] = useState(0)
   const [scoreAddAnimation, setScoreAddAnimation] = useState(false)
-  const [results, setResults] = useState([])
+  const [results] = useState([])
   const [end, setEnd] = useState(false)
 
-  const setNewWord = async (data: Array<Word>) => {
+  const setNewWord = async(data: Array<Word>) => {
     if (data.length < 1) {
       setEnd(true)
     }
@@ -87,7 +87,7 @@ function SprintGame() {
 
       const resultObject = {
         ...currentObject,
-        result: res === true ? 'false' : 'true',
+        result: res === true ? 'false' : 'true'
       }
       // @ts-ignore
       // setResults((oldArray) => [...oldArray, resultObject])
@@ -97,8 +97,7 @@ function SprintGame() {
       if (res) {
         setScoreLevel(0)
         const audio = new Audio()
-        audio.src =
-          'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
+        audio.src = 'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
         audio.play()
       } else {
         SprintAddScore(
@@ -109,8 +108,7 @@ function SprintGame() {
           setScoreAddAnimation
         )
         const audio = new Audio()
-        audio.src =
-          'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
+        audio.src = 'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
         audio.play()
       }
     }
@@ -126,13 +124,12 @@ function SprintGame() {
 
       const resultObject = {
         ...currentObject,
-        result: res,
+        result: res
       }
       console.log(resultObject, 'result')
 
       // @ts-ignore
-      ;(results as Array<Word>).push(resultObject)
-      // console.log(results, 'result')
+      results.push(resultObject)
 
       if (res) {
         SprintAddScore(
@@ -140,17 +137,15 @@ function SprintGame() {
           setScore,
           scoreLevel,
           setScoreLevel,
-          setGameStatus
+          setScoreAddAnimation
         )
         const audio = new Audio()
-        audio.src =
-          'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
+        audio.src = 'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
         audio.play()
       } else {
         setScoreLevel(0)
         const audio = new Audio()
-        audio.src =
-          'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
+        audio.src = 'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
         audio.play()
       }
     }

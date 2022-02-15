@@ -30,10 +30,8 @@ function SprintMenu({
       <div className="sprint-menu">
         <h2 className="sprint-menu__title">Sprint</h2>
         <p className="sprint-menu__des">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam,
-          laborum nam. Explicabo illum optio tenetur aliquam vel? Minima ullam
-          nulla neque porro, similique deserunt beatae iusto accusamus, commodi
-          voluptate animi!
+          Trains the skill of quick translation from English into Russian. You
+          need to choose whether the translation matches the suggested word
         </p>
         <select
           className="sprint-menu__select"

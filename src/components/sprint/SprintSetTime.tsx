@@ -1,4 +1,6 @@
-import React, { useEffect, useState, Dispatch, SetStateAction } from 'react'
+import React, {
+  useEffect, useState, Dispatch, SetStateAction
+} from 'react'
 
 function SprintSetTime({ setEnd, gameStatus }: PropTime) {
   const [time, setTime] = useState(30)
