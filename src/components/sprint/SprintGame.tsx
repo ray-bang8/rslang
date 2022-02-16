@@ -27,9 +27,9 @@ function SprintGame() {
   const [audioStatus, setAudioStatus] = useState(true)
   const [time, setTime] = useState(60)
   const [resultsBoolean, setResultsBoolean] = useState([])
-
-  const setNewWord = async(data: Array<Word>) => {
-    if (data.length < 1) {
+  const [curPage, setCurPage] = useState(0)
+  const setNewWord = async (data: Array<Word>) => {
+    if (results.length >= 20) {
       setEnd(true)
       setTime(0)
     }
@@ -44,24 +44,41 @@ function SprintGame() {
 
   useEffect(() => {
     async function handleUseEffect() {
-      const randomPage = (Math.random() * 5).toFixed()
+      let tempArr: Array<Word> = []
+      const randomPage = +(Math.random() * 5).toFixed()
+      setCurPage(randomPage)
+
       const res = await fetch(
         `https://rslang-team48.herokuapp.com/words?group=${group}&page=${randomPage}`
       )
       const resData = await res.json()
+      tempArr = resData
 
-      await setData(resData)
+      fetch(
+        `https://rslang-team48.herokuapp.com/words?group=${group}&page=${
+          curPage > 0 ? curPage + 1 : curPage - 1
+        }`
+      )
+        .then((i) => i.json())
+        .then((el: Array<Word>) => {
+          // @ts-ignore
+          setData([...tempArr, ...el])
+          console.log(data)
 
-      const randomWord = (await getRandomWord(resData)) || { word: 'Loading' }
-      if (randomWord) {
-        await setNewWord(resData)
-      }
+          const randomWord = getRandomWord(resData) || {
+            word: 'Loading',
+          }
+          if (randomWord) {
+            setNewWord(resData)
+          }
 
-      const randomQuestion = getRandomWord(resData)
-      setCurrentQuestion((randomQuestion as Word).wordTranslate)
+          const randomQuestion = getRandomWord(resData)
+          setCurrentQuestion((randomQuestion as Word).wordTranslate)
+          console.log(data.length)
+        })
     }
     handleUseEffect()
-  }, [page, group])
+  }, [page, group, end])
 
   async function handleNextWord() {
     SprintDeleteQuestion(data, currentWord)
@@ -84,7 +101,7 @@ function SprintGame() {
 
       const resultObject = {
         ...currentObject,
-        result: res === true ? 'false' : 'true'
+        result: res === true ? 'false' : 'true',
       }
       // @ts-ignore
       resultsBoolean.push(resultObject.result)
@@ -95,7 +112,8 @@ function SprintGame() {
         setScoreLevel(0)
         if (audioStatus) {
           const audio = new Audio()
-          audio.src = 'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
+          audio.src =
+            'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
           audio.play()
         }
       } else {
@@ -108,7 +126,8 @@ function SprintGame() {
         )
         if (audioStatus) {
           const audio = new Audio()
-          audio.src = 'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
+          audio.src =
+            'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
           audio.play()
         }
       }
@@ -125,7 +144,7 @@ function SprintGame() {
 
       const resultObject = {
         ...currentObject,
-        result: res
+        result: res,
       }
 
       // @ts-ignore
@@ -143,14 +162,16 @@ function SprintGame() {
         )
         if (audioStatus) {
           const audio = new Audio()
-          audio.src = 'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
+          audio.src =
+            'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
           audio.play()
         }
       } else {
         setScoreLevel(0)
         if (audioStatus) {
           const audio = new Audio()
-          audio.src = 'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
+          audio.src =
+            'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
           audio.play()
         }
       }
@@ -184,9 +205,10 @@ function SprintGame() {
     setTime(60)
     setResults([])
 
-    // set question
     const randomQuestion = getRandomWord(data)
-    setCurrentQuestion((randomQuestion as Word).wordTranslate)
+    if (randomQuestion) {
+      setCurrentQuestion((randomQuestion as Word).wordTranslate)
+    }
   }
 
   return (

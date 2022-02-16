@@ -5,6 +5,7 @@ function SprintDeleteQuestion(data: Array<Word>, word: string) {
     return el
   })
   data.splice(index, 1)
+  console.log(data)
 }
 
 export default SprintDeleteQuestion
