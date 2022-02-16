@@ -4,7 +4,9 @@ function SprintMenu({
   setGameStatus,
   setGroup,
   setScore,
-  setScoreLevel
+  setScoreLevel,
+  setEnd,
+  setTime
 }: PropMenu) {
   const [thisGroup, setThisGroup] = useState(9)
 
@@ -18,10 +20,12 @@ function SprintMenu({
 
   function handleStartBtn(): void {
     if (thisGroup !== 9) {
+      setEnd(false)
       setGroup(thisGroup)
       setScoreLevel(0)
       setScore(0)
       setGameStatus(true)
+      setTime(60)
     }
   }
 
@@ -40,7 +44,7 @@ function SprintMenu({
           onClick={handleSelect}
         >
           <option disabled={true} value="selected">
-            Select
+            Select level
           </option>
           <option value="0">1</option>
           <option value="1">2</option>
@@ -69,4 +73,6 @@ interface PropMenu {
   setGroup: Dispatch<SetStateAction<number>>
   setScore: Dispatch<SetStateAction<number>>
   setScoreLevel: Dispatch<SetStateAction<number>>
+  setEnd: Dispatch<SetStateAction<boolean>>
+  setTime: Dispatch<SetStateAction<number>>
 }
