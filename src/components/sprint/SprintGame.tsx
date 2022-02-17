@@ -28,7 +28,7 @@ function SprintGame() {
   const [time, setTime] = useState(60)
   const [resultsBoolean, setResultsBoolean] = useState([])
   const [curPage, setCurPage] = useState(0)
-  const setNewWord = async(data: Array<Word>) => {
+  const setNewWord = async (data: Array<Word>) => {
     if (results.length >= 20) {
       setEnd(true)
       setTime(0)
@@ -66,7 +66,7 @@ function SprintGame() {
           console.log(data)
 
           const randomWord = getRandomWord(resData) || {
-            word: 'Loading'
+            word: 'Loading',
           }
           if (randomWord) {
             setNewWord(resData)
@@ -101,7 +101,7 @@ function SprintGame() {
 
       const resultObject = {
         ...currentObject,
-        result: res === true ? 'false' : 'true'
+        result: res === true ? 'false' : 'true',
       }
       // @ts-ignore
       resultsBoolean.push(resultObject.result)
@@ -112,7 +112,8 @@ function SprintGame() {
         setScoreLevel(0)
         if (audioStatus) {
           const audio = new Audio()
-          audio.src = 'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
+          audio.src =
+            'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
           audio.play()
         }
       } else {
@@ -125,7 +126,8 @@ function SprintGame() {
         )
         if (audioStatus) {
           const audio = new Audio()
-          audio.src = 'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
+          audio.src =
+            'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
           audio.play()
         }
       }
@@ -142,7 +144,7 @@ function SprintGame() {
 
       const resultObject = {
         ...currentObject,
-        result: res
+        result: res,
       }
 
       // @ts-ignore
@@ -160,14 +162,16 @@ function SprintGame() {
         )
         if (audioStatus) {
           const audio = new Audio()
-          audio.src = 'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
+          audio.src =
+            'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
           audio.play()
         }
       } else {
         setScoreLevel(0)
         if (audioStatus) {
           const audio = new Audio()
-          audio.src = 'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
+          audio.src =
+            'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
           audio.play()
         }
       }
