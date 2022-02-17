@@ -16,7 +16,6 @@ function Header() {
     <header>
       <nav className="navbar">
         <img alt="logo-icon" className="nav__logo" src={logo} />
-
         <FontAwesomeIcon
           className="fa fa-bars bar-icon"
           icon={bars}
