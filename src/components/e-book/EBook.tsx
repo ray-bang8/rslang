@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Footer from '../footer/Footer'
-import Header from '../header/Header'
 import './ebook.scss'
 import EBookCurrentPage from './EBookCurrentPage'
 import EBookNavigator from './EBookNavigator'
@@ -46,7 +44,6 @@ function EBook() {
 
   return (
     <div>
-      <Header />
       <div className="cards-wrapper">
         {navStatus ? (
           <EBookNavigator
@@ -73,7 +70,6 @@ function EBook() {
         <EBookCurrentPage curPage={page} />
         <div className="blured-opacity"> </div>
       </div>
-      <Footer />
     </div>
   )
 }

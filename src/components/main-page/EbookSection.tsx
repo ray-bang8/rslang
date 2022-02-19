@@ -1,7 +1,8 @@
 /* eslint-disable react/button-has-type */
 import React from 'react'
-import circles from '../img/circles.png'
-import ebookImg from '../img/ebook.png'
+import { Link } from 'react-router-dom'
+import circles from '../../img/circles.png'
+import ebookImg from '../../img/ebook.png'
 
 export default function EbookSection() {
   return (
@@ -13,7 +14,7 @@ export default function EbookSection() {
       </div>
       <div className="eBookStart">
         <h2>Make learning new <br />words a daily habit </h2>
-        <button className="startBtn">Start</button>
+        <Link to="/ebook"><button className="startBtn">Start</button></Link>
       </div>
     </section>
   )
