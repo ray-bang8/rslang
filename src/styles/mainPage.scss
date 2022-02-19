@@ -293,3 +293,88 @@ main {
     }
 }
 }
+.stat-page {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .stat-page__header {
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 48px;
+        line-height: 72px;
+        text-align: center;
+    }
+
+    .stat-table {
+        width: 100%;
+        margin: 32px auto;
+        display: flex;
+        overflow: auto;
+        align-items: center;
+        justify-content: center;
+
+        .stat-table__body {
+            width: 100%;
+            display: table;
+            border-spacing: 0;
+            border-collapse: collapse;
+
+            .stat-table__head {
+                display: table-header-group;
+
+                .stat-table__row {
+                    background-color:  #FFF1F0;
+
+                    .row__head {
+                        font-family: 'Titillium Web', sans-serif;
+                        font-weight: 400;
+                        font-style: normal;
+                        font-size: 1.5rem;
+                        // line-height: 1.5rem;
+                        // padding: 6px 24px 6px 10px;
+                        letter-spacing: 0.01071em;
+                        vertical-align: inherit;
+                    }
+                }
+            }
+            .stat-table__field {
+                display: table-row-group;
+
+                .field__row {
+                    color: inherit;
+                    display: table-row;
+                    outline: 0;
+                    vertical-align: middle;
+
+                    .field__row-root {
+                        padding: 6px 24px 6px 16px;
+                        display: table-cell;
+                        font-size: 1.3rem;
+                        font-family: 'Titillium Web', sans-serif;
+                        font-weight: 400;
+                        border-bottom: 1px solid rgba(224,224,224,1);
+                        letter-spacing: 0.01071em;
+                        vertical-align: inherit;
+                        line-height: 1.43;
+                
+
+                    }
+                    
+                    .data {
+                        text-align: center;
+                    }
+                  
+                }
+                tr:last-child {
+                    background-color:  #FFF1F0;
+                }
+            }
+        }
+        .table {
+            max-width: 800px;
+            min-width: 464px;
+        }
+
+    }
+}
