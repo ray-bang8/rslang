@@ -30,8 +30,12 @@ p {
   position: relative;
 }
 
-.card.aggregated {
+.card.hard {
   border: yellow 3px solid;
+}
+
+.card.learnt {
+  border: green 3px solid;
 }
 
 .card__top {
@@ -238,19 +242,22 @@ p {
   background-color: #7e7e7e;
   backdrop-filter: blur(5px);
   position: fixed;
-  left: -36px;
+  left: -9%;
   top: 50%;
   transform: translateY(-50%);
   height: 36%;
   width: 15%;
   position: fixed;
-  left: -36px;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 36%;
-  width: 15%;
   border-radius: 60%;
   filter: blur(1px);
+}
+
+.ebook-btns {
+  width: 150px;
+  height: 34px;
+  border-radius: 5px;
+  margin: 0.5% 1%;
+  cursor: pointer;
 }
 
 @media (max-width: 1400px) {
@@ -262,6 +269,10 @@ p {
 @media (max-width: 1100px) {
   .card {
     height: 447px;
+  }
+
+  .blured-opacity {
+    left: -7%;
   }
 }
 
@@ -277,4 +288,32 @@ p {
   .card__bottom {
     height: 25%;
   }
+
+  .blured-opacity {
+    left: -7%;
+  }
+}
+
+@media (max-width: 700px) {
+  .blured-opacity {
+    left: -5%;
+  }
+}
+
+@media (max-width: 630px) {
+  .blured-opacity {
+    left: -3%;
+  }
+}
+
+@media (max-width: 185px) {
+  .blured-opacity {
+    left: -0%;
+  }
+}
+
+.card.hard .card__set-btn:hover .card__btn {
+  transform: scale(1);
+  filter: none;
+  cursor: default;
 }
