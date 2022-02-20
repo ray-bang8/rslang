@@ -1,9 +1,9 @@
 import React from 'react'
-import AboutTeamSection from '../components/AboutTeamSection'
-import EbookSection from '../components/EbookSection'
-import GamesSection from '../components/GamesSection'
-import MainSection from '../components/MainSection'
-import StatisticSection from '../components/StatisticSection'
+import AboutTeamSection from '../components/main-page/AboutTeamSection'
+import EbookSection from '../components/main-page/EbookSection'
+import GamesSection from '../components/main-page/GamesSection'
+import MainSection from '../components/main-page/MainSection'
+import StatisticSection from '../components/main-page/StatisticSection'
 
 function MainPage() {
   return (

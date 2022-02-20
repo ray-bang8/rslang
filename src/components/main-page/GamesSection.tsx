@@ -1,7 +1,7 @@
 import React from 'react'
-import audioCallImg from '../img/audiocall.png'
-import gamesBgImg from '../img/gamesbg.png'
-import sprintImg from '../img/sprint.png'
+import audioCallImg from '../../img/audiocall.png'
+import gamesBgImg from '../../img/gamesbg.png'
+import sprintImg from '../../img/sprint.png'
 
 export default function GamesSection() {
   return (
