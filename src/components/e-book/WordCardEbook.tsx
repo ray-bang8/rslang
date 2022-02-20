@@ -6,17 +6,17 @@ import HardWords from './HardWords'
 import RandomBgColor from './RandomBgColor'
 import UpSideCard from './UpSideCard'
 
-let stopRequest = true
-
 interface propCard {
   data: Card
   authStatus: boolean
   setAuthStatus: Dispatch<SetStateAction<boolean>>
   status: string
   hardWords: Array<Card>
-  setHardWords: Dispatch<SetStateAction<Array<Card>>>
+  setHardWords: Dispatch<SetStateAction<Array<object>>>
   setLearntWords: Dispatch<SetStateAction<Array<Card>>>
   learntWords: Array<object>
+  update: number
+  setUpdate: Dispatch<SetStateAction<number>>
 }
 
 function WordCardEbook({
@@ -28,38 +28,38 @@ function WordCardEbook({
   setHardWords,
   setLearntWords,
   learntWords,
+  update,
+  setUpdate,
 }: propCard) {
   const styleBg = RandomBgColor()
 
-  useEffect(() => {
-    async function fetchHardWords() {
-      const fetchedHardWords = await HardWords(String(userId), token)
+  // useEffect(() => {
+  //   async function fetchHardWords() {
+  //     const fetchedHardWords = await HardWords(String(userId), token)
 
-      const filteredLearntWords: Array<object> = []
-      const filteredHardWords = (fetchedHardWords as Array<object>).reduce(
-        // @ts-ignore
-        (acc: Array<object>, el: UserData) => {
-          if (el.difficulty === 'hard') {
-            acc.push(el)
-          } else if (el.difficulty === 'learnt') {
-            filteredLearntWords.push(el)
-          }
-          return acc
-        },
-        []
-      )
-      // console.log(filteredHardWords)
+  //     const filteredLearntWords: Array<object> = []
+  //     const filteredHardWords = (fetchedHardWords as Array<object>).reduce(
+  //       // @ts-ignore
+  //       (acc: Array<object>, el: UserData) => {
+  //         if (el.difficulty === 'hard') {
+  //           acc.push(el)
+  //         } else if (el.difficulty === 'learnt') {
+  //           filteredLearntWords.push(el)
+  //         }
+  //         return acc
+  //       },
+  //       []
+  //     )
 
-      setHardWords(filteredHardWords)
-      // @ts-ignore
-      setLearntWords(filteredLearntWords)
-    }
+  //     setHardWords(filteredHardWords)
+  //     setLearntWords(filteredLearntWords)
+  //   }
 
-    if (stopRequest) {
-      fetchHardWords()
-      stopRequest = false
-    }
-  }, [status, learntWords, hardWords])
+  //   if (update === true) {
+  //     fetchHardWords()
+  //     setUpdate(false)
+  //   }
+  // }, [status, hardWords])
 
   const userDataInfo: object | null | string = localStorage.getItem('userData')
   // @ts-ignore
@@ -74,16 +74,14 @@ function WordCardEbook({
     }
     if (hardWords) {
       const filteredHardWord = hardWords.map((el) => {
-        // console.log(el)
-
         if (data.id === (el as WordData).wordId) {
           setIsInHardWord(true)
           setIsBusy(true)
         }
         return el
       })
-      // console.log(hardWords, 'filteredHardWord')
     }
+
     if (learntWords) {
       const filteredLearntWord = learntWords.map((el) => {
         if (data.id === (el as WordData).wordId) {
@@ -93,7 +91,7 @@ function WordCardEbook({
         return el
       })
     }
-  }, [learntWords, isInHardWord, isLearnWord])
+  }, [status])
 
   return (
     <figure
@@ -118,7 +116,9 @@ function WordCardEbook({
           setHardWord={setIsInHardWord}
           setIsBusy={setIsBusy}
           setIsLearnWord={setIsLearnWord}
+          setUpdate={setUpdate}
           status={status}
+          update={update}
           userData={{ userId, refreshToken, token }}
         />
       ) : (

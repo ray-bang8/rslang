@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React, { Dispatch, SetStateAction } from 'react'
 import putHardWords from './putHardWords'
 import putLearntWord from './putLearntWord'
@@ -15,6 +16,8 @@ function EBookWordBtns({
   isLearnWord,
   isBusy,
   setIsBusy,
+  setUpdate,
+  update,
 }: EbookWordBtns) {
   const { userId, refreshToken, token } = userData
 
@@ -23,12 +26,14 @@ function EBookWordBtns({
     putHardWords(userId, token, data)
     setHardWord(true)
     setIsBusy(true)
+    setUpdate(update + 1)
   }
   const handleLearnClick = () => {
     console.log(data, userData.userId)
     putLearntWord(userId, token, data)
     setIsLearnWord(true)
     setIsBusy(true)
+    setUpdate(update + 1)
   }
 
   const handleDeleteClick = () => {
@@ -36,6 +41,7 @@ function EBookWordBtns({
     const { token } = userData
     console.log('delete')
     deleteWord(userId, token, data.id)
+    setUpdate(update + 1)
   }
   return (
     <div className="card__word-btns">
@@ -112,6 +118,8 @@ interface EbookWordBtns {
   isLearnWord: boolean
   isBusy: boolean
   setIsBusy: Dispatch<SetStateAction<boolean>>
+  setUpdate: Dispatch<SetStateAction<number>>
+  update: number
 }
 
 type Card = {

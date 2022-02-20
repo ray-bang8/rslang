@@ -9,6 +9,8 @@ function HardWordBlock({
   status,
   authStatus,
   setAuthStatus,
+  setUpdate,
+  update,
 }) {
   const { userId, refreshToken, token } = userData
 
@@ -22,9 +24,8 @@ function HardWordBlock({
     //     }
     //   }, [])
     //   // await setHardWords(filteredHardWords)
-      // console.log(fetchedHardWords)
+    // console.log(fetchedHardWords)
     // }
-
     // fetchHardWords()
   }, [])
   console.log(hardWords)
@@ -35,7 +36,9 @@ function HardWordBlock({
       hardWords={hardWords}
       key={el.optional.id}
       setAuthStatus={setAuthStatus}
+      setUpdate={setUpdate}
       status={status}
+      update={update}
     />
   ))
 }

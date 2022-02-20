@@ -16,7 +16,7 @@ const userData = {
   message: 'Authenticated',
   userId: '620e40398872720016070592',
   token:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsImlhdCI6MTY0NTM2NTkyNiwiZXhwIjoxNjQ1MzgwMzI2fQ.-TFWHy2aWrCrzCIuyp4o6U2sTGc_VjkvvJLBpIbHXPo',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsImlhdCI6MTY0NTM4MjQ5OSwiZXhwIjoxNjQ1Mzk2ODk5fQ.J2GP18nhVHsH1fKj7ozGYIdEOXNeQW0MGvXR2PUCLx8',
   refreshToken:
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsInRva2VuSWQiOiJlN2RjYWYzZC1kOTVlLTRjOWEtOWUwMi03N2VkZmJlMDI2ODAiLCJpYXQiOjE2NDUzNTAwMDksImV4cCI6MTY0NTM2NjIwOX0.CgaCT9lMkq09IpnGasYv_Rp63jscWOkgy7HJ8-m6ijw',
 }
@@ -37,6 +37,7 @@ function EBook() {
   const [authStatus, setAuthStatus] = useState(false)
   const [learntWords, setLearntWords] = useState([])
   const [hardWords, setHardWords] = useState([])
+  const [update, setUpdate] = useState(0)
 
   const userDataInfo = localStorage.getItem('userData')
   const {
@@ -81,6 +82,31 @@ function EBook() {
     // }, 1000)
   }, [group, page])
 
+  useEffect(() => {
+    async function fetchHardWords() {
+      const fetchedHardWords = await HardWords(String(userId), token)
+
+      const filteredLearntWords: Array<object> = []
+      const filteredHardWords = (fetchedHardWords as Array<object>).reduce(
+        // @ts-ignore
+        (acc: Array<object>, el: UserData) => {
+          if (el.difficulty === 'hard') {
+            acc.push(el)
+          } else if (el.difficulty === 'learnt') {
+            filteredLearntWords.push(el)
+          }
+          return acc
+        },
+        []
+      )
+
+      setHardWords(filteredHardWords)
+      setLearntWords(filteredLearntWords)
+    }
+
+    fetchHardWords()
+  }, [update])
+
   return (
     <div>
       <Header />
@@ -121,6 +147,8 @@ function EBook() {
                 setHardWords={setHardWords}
                 setLearntWords={setLearntWords}
                 status={status}
+                update={update}
+                setUpdate={setUpdate}
               />
             ))
           : ''}
@@ -133,6 +161,8 @@ function EBook() {
             setHardWords={setHardWords}
             status={status}
             userData={{ userId, refreshToken, token }}
+            update={update}
+            setUpdate={setUpdate}
           />
         ) : (
           ''
@@ -145,6 +175,8 @@ function EBook() {
                 data={el.optional}
                 key={el.id}
                 setAuthStatus={setAuthStatus}
+                update={update}
+                setUpdate={setUpdate}
               />
             ))
           : ''}
