@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import putHardWords from './putHardWords'
 import putLearntWord from './putLearntWord'
+import deleteWord from './deleteWord'
 
 function EBookWordBtns({
   data,
@@ -24,10 +25,17 @@ function EBookWordBtns({
     setIsBusy(true)
   }
   const handleLearnClick = () => {
-    console.log(data, hardWords)
+    console.log(data, userData.userId)
+    putLearntWord(userId, token, data)
+    setIsLearnWord(true)
     setIsBusy(true)
-    // putLearntWord(userId, token, data)
-    // setIsLearnWord(true)
+  }
+
+  const handleDeleteClick = () => {
+    const { userId } = userData
+    const { token } = userData
+    console.log('delete')
+    deleteWord(userId, token, data.id)
   }
   return (
     <div className="card__word-btns">
@@ -59,11 +67,13 @@ function EBookWordBtns({
         ''
       )}
       {/* {(status === 'learnt') | (status === undefined) ? ( */}
-      {(status === 'learnt') | (status === undefined) ? (
+      {status === 'learnt' || status === undefined ? (
         <button className="card__delete-btn" type="button">
           <img
             alt="bucket"
             className="card__btn"
+            onClick={handleDeleteClick}
+            role="presentation"
             src="https://icon-library.com/images/delete-icon-image/delete-icon-image-17.jpg"
           />
         </button>
@@ -76,6 +86,8 @@ function EBookWordBtns({
           <img
             alt="bucket"
             className="card__btn"
+            onClick={handleDeleteClick}
+            role="presentation"
             src="https://icon-library.com/images/delete-icon-image/delete-icon-image-17.jpg"
           />
         </button>

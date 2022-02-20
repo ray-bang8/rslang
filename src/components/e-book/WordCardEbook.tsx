@@ -52,14 +52,14 @@ function WordCardEbook({
 
       setHardWords(filteredHardWords)
       // @ts-ignore
-      setLearntWords(fetchedHardWords)
+      setLearntWords(filteredLearntWords)
     }
 
     if (stopRequest) {
       fetchHardWords()
       stopRequest = false
     }
-  }, [status])
+  }, [status, learntWords, hardWords])
 
   const userDataInfo: object | null | string = localStorage.getItem('userData')
   // @ts-ignore
@@ -78,6 +78,7 @@ function WordCardEbook({
 
         if (data.id === (el as WordData).wordId) {
           setIsInHardWord(true)
+          setIsBusy(true)
         }
         return el
       })
@@ -86,14 +87,13 @@ function WordCardEbook({
     if (learntWords) {
       const filteredLearntWord = learntWords.map((el) => {
         if (data.id === (el as WordData).wordId) {
-          console.log(data.id, (el as WordData).wordId)
           setIsLearnWord(true)
           setIsBusy(true)
         }
         return el
       })
     }
-  }, [learntWords])
+  }, [learntWords, isInHardWord, isLearnWord])
 
   return (
     <figure
@@ -112,14 +112,14 @@ function WordCardEbook({
           data={data}
           hardWord={isInHardWord}
           hardWords={hardWords}
+          isBusy={isBusy}
+          isLearnWord={isLearnWord}
           learntWords={learntWords}
           setHardWord={setIsInHardWord}
+          setIsBusy={setIsBusy}
           setIsLearnWord={setIsLearnWord}
           status={status}
           userData={{ userId, refreshToken, token }}
-          isLearnWord={isLearnWord}
-          isBusy={isBusy}
-          setIsBusy={setIsBusy}
         />
       ) : (
         ''

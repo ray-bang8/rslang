@@ -31,11 +31,11 @@ p {
 }
 
 .card.hard {
-  border: yellow 3px solid;
+  border: #ff253a 4px solid;
 }
 
 .card.learnt {
-  border: green 3px solid;
+  border: green 4px solid;
 }
 
 .card__top {
@@ -257,7 +257,15 @@ p {
   height: 34px;
   border-radius: 5px;
   margin: 0.5% 1%;
+  // background-color: #fe5244;
   cursor: pointer;
+}
+
+.ebook-btns:first-child {
+}
+
+.ebook-btns :nth-child(1) {
+  background-color: #fe5244;
 }
 
 @media (max-width: 1400px) {
