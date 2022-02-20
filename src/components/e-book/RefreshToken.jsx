@@ -13,7 +13,6 @@ function RefreshToken(id, refreshToken) {
     .then((i) => i.json())
     .then((i) => {
       res = i
-      console.log(res)
       return i
     })
     .catch((err) => {

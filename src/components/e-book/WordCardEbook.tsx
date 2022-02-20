@@ -1,8 +1,9 @@
 /* eslint-disable no-nested-ternary */
-import React, { useEffect, useState, Dispatch, SetStateAction } from 'react'
+import React, {
+  useEffect, useState, Dispatch, SetStateAction
+} from 'react'
 import BottomSideCard from './BottomSideCard'
 import EBookWordBtns from './EBookWordBtns'
-import HardWords from './HardWords'
 import RandomBgColor from './RandomBgColor'
 import UpSideCard from './UpSideCard'
 
@@ -12,8 +13,6 @@ interface propCard {
   setAuthStatus: Dispatch<SetStateAction<boolean>>
   status: string
   hardWords: Array<Card>
-  setHardWords: Dispatch<SetStateAction<Array<object>>>
-  setLearntWords: Dispatch<SetStateAction<Array<Card>>>
   learntWords: Array<object>
   update: number
   setUpdate: Dispatch<SetStateAction<number>>
@@ -25,41 +24,11 @@ function WordCardEbook({
   setAuthStatus,
   status,
   hardWords,
-  setHardWords,
-  setLearntWords,
   learntWords,
   update,
-  setUpdate,
+  setUpdate
 }: propCard) {
   const styleBg = RandomBgColor()
-
-  // useEffect(() => {
-  //   async function fetchHardWords() {
-  //     const fetchedHardWords = await HardWords(String(userId), token)
-
-  //     const filteredLearntWords: Array<object> = []
-  //     const filteredHardWords = (fetchedHardWords as Array<object>).reduce(
-  //       // @ts-ignore
-  //       (acc: Array<object>, el: UserData) => {
-  //         if (el.difficulty === 'hard') {
-  //           acc.push(el)
-  //         } else if (el.difficulty === 'learnt') {
-  //           filteredLearntWords.push(el)
-  //         }
-  //         return acc
-  //       },
-  //       []
-  //     )
-
-  //     setHardWords(filteredHardWords)
-  //     setLearntWords(filteredLearntWords)
-  //   }
-
-  //   if (update === true) {
-  //     fetchHardWords()
-  //     setUpdate(false)
-  //   }
-  // }, [status, hardWords])
 
   const userDataInfo: object | null | string = localStorage.getItem('userData')
   // @ts-ignore
@@ -73,7 +42,7 @@ function WordCardEbook({
       setAuthStatus(true)
     }
     if (hardWords) {
-      const filteredHardWord = hardWords.map((el) => {
+      hardWords.map((el) => {
         if (data.id === (el as WordData).wordId) {
           setIsInHardWord(true)
           setIsBusy(true)
@@ -83,7 +52,7 @@ function WordCardEbook({
     }
 
     if (learntWords) {
-      const filteredLearntWord = learntWords.map((el) => {
+      learntWords.map((el) => {
         if (data.id === (el as WordData).wordId) {
           setIsLearnWord(true)
           setIsBusy(true)
@@ -99,10 +68,10 @@ function WordCardEbook({
         isInHardWord
           ? 'card active hard'
           : isLearnWord
-          ? 'card active learnt'
-          : authStatus
-          ? 'card active'
-          : 'card'
+            ? 'card active learnt'
+            : authStatus
+              ? 'card active'
+              : 'card'
       }
     >
       {authStatus ? (
@@ -148,14 +117,6 @@ type Card = {
   word?: string
   wordTranslate?: string
   data?: object | string
-}
-
-interface UserData {
-  token: string
-  refreshToken: string
-  message?: 'authenticated'
-  userId?: string
-  difficulty: string
 }
 
 type WordData = {

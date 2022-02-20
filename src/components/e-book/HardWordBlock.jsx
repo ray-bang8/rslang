@@ -15,20 +15,7 @@ function HardWordBlock({
   const { userId, refreshToken, token } = userData
 
   useEffect(() => {
-    // async function fetchHardWords() {
-    //   const fetchedHardWords = await HardWords(String(userId), token)
-    //   const filteredHardWords = fetchedHardWords.reduce((acc, el) => {
-    //     if (el.difficulty === 'hard') {
-    //       acc.push(el)
-    //       return acc
-    //     }
-    //   }, [])
-    //   // await setHardWords(filteredHardWords)
-    // console.log(fetchedHardWords)
-    // }
-    // fetchHardWords()
   }, [])
-  console.log(hardWords)
   return hardWords.map((el) => (
     <WordCardEbook
       authStatus={authStatus}

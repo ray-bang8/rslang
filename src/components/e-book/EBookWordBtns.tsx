@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 import React, { Dispatch, SetStateAction } from 'react'
+import deleteWord from './deleteWord'
 import putHardWords from './putHardWords'
 import putLearntWord from './putLearntWord'
-import deleteWord from './deleteWord'
 
 function EBookWordBtns({
   data,
@@ -17,19 +18,17 @@ function EBookWordBtns({
   isBusy,
   setIsBusy,
   setUpdate,
-  update,
+  update
 }: EbookWordBtns) {
-  const { userId, refreshToken, token } = userData
+  const { userId, token } = userData
 
   const handleImgClick = () => {
-    console.log(data)
     putHardWords(userId, token, data)
     setHardWord(true)
     setIsBusy(true)
     setUpdate(update + 1)
   }
   const handleLearnClick = () => {
-    console.log(data, userData.userId)
     putLearntWord(userId, token, data)
     setIsLearnWord(true)
     setIsBusy(true)
@@ -39,7 +38,6 @@ function EBookWordBtns({
   const handleDeleteClick = () => {
     const { userId } = userData
     const { token } = userData
-    console.log('delete')
     deleteWord(userId, token, data.id)
     setUpdate(update + 1)
   }
@@ -58,7 +56,6 @@ function EBookWordBtns({
       ) : (
         ''
       )}
-      {/* {status === 'ebook' && hardWord !== true ? ( */}
       {status === 'ebook' && !isBusy ? (
         <button className="card__set-btn" type="button">
           <img
@@ -66,14 +63,13 @@ function EBookWordBtns({
             className="card__btn"
             onClick={handleLearnClick}
             role="presentation"
-            src="https://www.clipartmax.com/png/middle/18-183566_eco-green-light-bulb-icon-green-lightbulb-icon-png.png"
+            src="https://www.pikpng.com/pngl/b/268-2681524_light-bulb-icon-of-electric-lamp-with-green.png"
           />
         </button>
       ) : (
         ''
       )}
-      {/* {(status === 'learnt') | (status === undefined) ? ( */}
-      {status === 'learnt' || status === undefined ? (
+      {status === 'learnt' || !status ? (
         <button className="card__delete-btn" type="button">
           <img
             alt="bucket"
@@ -86,7 +82,6 @@ function EBookWordBtns({
       ) : (
         ''
       )}
-      {/* {status === 'hard' ? ( */}
       {status === 'hard' ? (
         <button className="card__delete-btn" type="button">
           <img

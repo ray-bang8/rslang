@@ -8,7 +8,6 @@ import EBookPrevPage from './EBookPrevPage'
 import EbookBtn from './EbookBtn'
 import HardWordBlock from './HardWordBlock'
 import HardWords from './HardWords'
-import RefreshToken from './RefreshToken'
 import WordCardEbook from './WordCardEbook'
 import './ebook.scss'
 
@@ -18,7 +17,7 @@ const userData = {
   token:
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsImlhdCI6MTY0NTM4MjQ5OSwiZXhwIjoxNjQ1Mzk2ODk5fQ.J2GP18nhVHsH1fKj7ozGYIdEOXNeQW0MGvXR2PUCLx8',
   refreshToken:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsInRva2VuSWQiOiJlN2RjYWYzZC1kOTVlLTRjOWEtOWUwMi03N2VkZmJlMDI2ODAiLCJpYXQiOjE2NDUzNTAwMDksImV4cCI6MTY0NTM2NjIwOX0.CgaCT9lMkq09IpnGasYv_Rp63jscWOkgy7HJ8-m6ijw',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsInRva2VuSWQiOiJlN2RjYWYzZC1kOTVlLTRjOWEtOWUwMi03N2VkZmJlMDI2ODAiLCJpYXQiOjE2NDUzNTAwMDksImV4cCI6MTY0NTM2NjIwOX0.CgaCT9lMkq09IpnGasYv_Rp63jscWOkgy7HJ8-m6ijw'
 }
 localStorage.setItem('userData', JSON.stringify(userData))
 
@@ -26,8 +25,8 @@ function EBook() {
   const [data, setData] = useState([
     {
       word: 'Loading',
-      id: 0,
-    },
+      id: 0
+    }
   ])
 
   const [group, setGroup] = useState(1)
@@ -44,20 +43,15 @@ function EBook() {
     userId,
     refreshToken,
     token,
-    message,
+    message
     // @ts-ignore
   } = JSON.parse(userDataInfo)
 
   useEffect(() => {
-    console.log(token)
-
     const basicURL = 'https://rslang-team48.herokuapp.com/'
     const getPage = localStorage.getItem('curPage')
     const getGroup = localStorage.getItem('curGroup')
     const getNavStatus = localStorage.getItem('navStatus')
-
-    // const newUserData = RefreshToken(String(userId), refreshToken)
-    // console.log(newUserData)
 
     if (getNavStatus === 'true') {
       setNavStatus(true)
@@ -75,11 +69,6 @@ function EBook() {
       .catch((err) => {
         throw err
       })
-
-    // setTimeout(() => {
-    //   setStatus('hard')
-    //   setStatus('ebook')
-    // }, 1000)
   }, [group, page])
 
   useEffect(() => {
@@ -90,8 +79,10 @@ function EBook() {
       const filteredHardWords = (fetchedHardWords as Array<object>).reduce(
         // @ts-ignore
         (acc: Array<object>, el: UserData) => {
+          // @ts-ignore
           if (el.difficulty === 'hard') {
             acc.push(el)
+            // @ts-ignore
           } else if (el.difficulty === 'learnt') {
             filteredLearntWords.push(el)
           }
@@ -100,7 +91,9 @@ function EBook() {
         []
       )
 
+      // @ts-ignore
       setHardWords(filteredHardWords)
+      // @ts-ignore
       setLearntWords(filteredLearntWords)
     }
 
@@ -110,21 +103,38 @@ function EBook() {
   return (
     <div>
       <Header />
-      {message === 'Authenticated' ? (
-        <EbookBtn btnName="Ebook Words" setStatus={setStatus} />
-      ) : (
-        ''
-      )}
-      {message === 'Authenticated' ? (
-        <EbookBtn btnName="Learnt Words" setStatus={setStatus} />
-      ) : (
-        ''
-      )}
-      {message === 'Authenticated' ? (
-        <EbookBtn btnName="Hard Words" setStatus={setStatus} />
-      ) : (
-        ''
-      )}
+      <div className="ebook-btns-wrapper">
+        {message === 'Authenticated' ? (
+          <EbookBtn
+            btnName="Ebook Words"
+            setStatus={setStatus}
+            setUpdate={setUpdate}
+            update={update}
+          />
+        ) : (
+          ''
+        )}
+        {message === 'Authenticated' ? (
+          <EbookBtn
+            btnName="Learnt Words"
+            setStatus={setStatus}
+            setUpdate={setUpdate}
+            update={update}
+          />
+        ) : (
+          ''
+        )}
+        {message === 'Authenticated' ? (
+          <EbookBtn
+            btnName="Difficult Words"
+            setStatus={setStatus}
+            setUpdate={setUpdate}
+            update={update}
+          />
+        ) : (
+          ''
+        )}
+      </div>
       <div className="cards-wrapper">
         {navStatus ? (
           <EBookNavigator
@@ -137,20 +147,21 @@ function EBook() {
         )}
         {status === 'ebook'
           ? data.map((el) => (
-              <WordCardEbook
-                authStatus={authStatus}
-                data={el}
-                hardWords={hardWords}
-                key={el.id}
-                learntWords={learntWords}
-                setAuthStatus={setAuthStatus}
-                setHardWords={setHardWords}
-                setLearntWords={setLearntWords}
-                status={status}
-                update={update}
-                setUpdate={setUpdate}
-              />
-            ))
+            <WordCardEbook
+              authStatus={authStatus}
+              data={el}
+              hardWords={hardWords}
+              key={el.id}
+              learntWords={learntWords}
+              setAuthStatus={setAuthStatus}
+                // @ts-ignore
+              setHardWords={setHardWords}
+              setLearntWords={setLearntWords}
+              setUpdate={setUpdate}
+              status={status}
+              update={update}
+            />
+          ))
           : ''}
 
         {status === 'hard' ? (
@@ -159,10 +170,10 @@ function EBook() {
             hardWords={hardWords}
             setAuthStatus={setAuthStatus}
             setHardWords={setHardWords}
-            status={status}
-            userData={{ userId, refreshToken, token }}
-            update={update}
             setUpdate={setUpdate}
+            status={status}
+            update={update}
+            userData={{ userId, refreshToken, token }}
           />
         ) : (
           ''
@@ -170,31 +181,40 @@ function EBook() {
 
         {status === 'learnt'
           ? learntWords.map((el) => (
-              <WordCardEbook
-                authStatus={authStatus}
-                data={el.optional}
-                key={el.id}
-                setAuthStatus={setAuthStatus}
-                update={update}
-                setUpdate={setUpdate}
-              />
-            ))
+            // @ts-ignore
+            <WordCardEbook
+              authStatus={authStatus}
+              // @ts-ignore
+              data={el.optional}
+              // @ts-ignore
+              key={el.id}
+              setAuthStatus={setAuthStatus}
+              setUpdate={setUpdate}
+              update={update}
+            />
+          ))
           : ''}
 
-        <button
-          className="menu-wrapper"
-          onClick={() => {
-            setNavStatus(true)
-            localStorage.setItem('navStatus', `${true}`)
-          }}
-          type="button"
-        >
-          Menu
-        </button>
-        <EBookPrevPage curPage={page} setPrevPage={setPage} />
-        <EBookNextPage curPage={page} setNextPage={setPage} />
-        <EBookCurrentPage curPage={page} />
-        <div className="blured-opacity"> </div>
+        {status === 'ebook' ? (
+          <div className="ebook-navigator-menu">
+            <button
+              className="menu-wrapper"
+              onClick={() => {
+                setNavStatus(true)
+                localStorage.setItem('navStatus', `${true}`)
+              }}
+              type="button"
+            >
+              Menu
+            </button>
+            <EBookPrevPage curPage={page} setPrevPage={setPage} />
+            <EBookNextPage curPage={page} setNextPage={setPage} />
+            <EBookCurrentPage curPage={page} />
+            <div className="blured-opacity"> </div>
+          </div>
+        ) : (
+          ''
+        )}
       </div>
       <Footer />
     </div>

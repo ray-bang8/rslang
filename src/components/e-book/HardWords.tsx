@@ -10,7 +10,6 @@ function HardWords(id: string | number, token: string) {
     .then((i) => i.json())
     .then((i) => {
       res = i
-      console.log(res)
       return res
     })
 }
