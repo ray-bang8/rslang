@@ -11,6 +11,7 @@ import HardWords from './HardWords'
 import WordCardEbook from './WordCardEbook'
 import './ebook.scss'
 
+// eslint-disable-next-line no-unused-vars
 const userData = {
   message: 'Authenticated',
   userId: '620e40398872720016070592',
@@ -19,7 +20,6 @@ const userData = {
   refreshToken:
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsInRva2VuSWQiOiJlN2RjYWYzZC1kOTVlLTRjOWEtOWUwMi03N2VkZmJlMDI2ODAiLCJpYXQiOjE2NDUzNTAwMDksImV4cCI6MTY0NTM2NjIwOX0.CgaCT9lMkq09IpnGasYv_Rp63jscWOkgy7HJ8-m6ijw'
 }
-localStorage.setItem('userData', JSON.stringify(userData))
 
 function EBook() {
   const [data, setData] = useState([
@@ -39,13 +39,15 @@ function EBook() {
   const [update, setUpdate] = useState(0)
 
   const userDataInfo = localStorage.getItem('userData')
-  const {
-    userId,
-    refreshToken,
-    token,
-    message
-    // @ts-ignore
-  } = JSON.parse(userDataInfo)
+  let userId: any
+  let refreshToken: any
+  let token: any
+
+  if (userDataInfo) {
+    userId = JSON.parse(userDataInfo).userId
+    refreshToken = JSON.parse(userDataInfo).refreshToken
+    token = JSON.parse(userDataInfo).token
+  }
 
   useEffect(() => {
     const basicURL = 'https://rslang-team48.herokuapp.com/'
@@ -72,39 +74,51 @@ function EBook() {
   }, [group, page])
 
   useEffect(() => {
-    async function fetchHardWords() {
-      const fetchedHardWords = await HardWords(String(userId), token)
-
-      const filteredLearntWords: Array<object> = []
-      const filteredHardWords = (fetchedHardWords as Array<object>).reduce(
+    if (userDataInfo) {
+      const {
+        userId,
+        token
         // @ts-ignore
-        (acc: Array<object>, el: UserData) => {
-          // @ts-ignore
-          if (el.difficulty === 'hard') {
-            acc.push(el)
+      } = JSON.parse(userDataInfo)
+
+      // @ts-ignore
+      // eslint-disable-next-line no-inner-declarations
+      async function fetchHardWords() {
+        if (authStatus) {
+          const fetchedHardWords = await HardWords(String(userId), token)
+
+          const filteredLearntWords: Array<object> = []
+          const filteredHardWords = (fetchedHardWords as Array<object>).reduce(
             // @ts-ignore
-          } else if (el.difficulty === 'learnt') {
-            filteredLearntWords.push(el)
-          }
-          return acc
-        },
-        []
-      )
+            (acc: Array<object>, el: UserData) => {
+              // @ts-ignore
+              if (el.difficulty === 'hard') {
+                acc.push(el)
+                // @ts-ignore
+              } else if (el.difficulty === 'learnt') {
+                filteredLearntWords.push(el)
+              }
+              return acc
+            },
+            []
+          )
 
-      // @ts-ignore
-      setHardWords(filteredHardWords)
-      // @ts-ignore
-      setLearntWords(filteredLearntWords)
+          // @ts-ignore
+          setHardWords(filteredHardWords)
+          // @ts-ignore
+          setLearntWords(filteredLearntWords)
+        }
+      }
+
+      fetchHardWords()
     }
-
-    fetchHardWords()
   }, [update])
 
   return (
     <div>
       <Header />
       <div className="ebook-btns-wrapper">
-        {message === 'Authenticated' ? (
+        {userDataInfo ? (
           <EbookBtn
             btnName="Ebook Words"
             setStatus={setStatus}
@@ -114,7 +128,7 @@ function EBook() {
         ) : (
           ''
         )}
-        {message === 'Authenticated' ? (
+        {userDataInfo ? (
           <EbookBtn
             btnName="Learnt Words"
             setStatus={setStatus}
@@ -124,7 +138,7 @@ function EBook() {
         ) : (
           ''
         )}
-        {message === 'Authenticated' ? (
+        {userDataInfo ? (
           <EbookBtn
             btnName="Difficult Words"
             setStatus={setStatus}
@@ -164,7 +178,7 @@ function EBook() {
           ))
           : ''}
 
-        {status === 'hard' ? (
+        {authStatus && status === 'hard' ? (
           <HardWordBlock
             authStatus={authStatus}
             hardWords={hardWords}
@@ -184,9 +198,9 @@ function EBook() {
             // @ts-ignore
             <WordCardEbook
               authStatus={authStatus}
-              // @ts-ignore
+                // @ts-ignore
               data={el.optional}
-              // @ts-ignore
+                // @ts-ignore
               key={el.id}
               setAuthStatus={setAuthStatus}
               setUpdate={setUpdate}

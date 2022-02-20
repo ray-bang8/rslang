@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable no-nested-ternary */
 import React, {
   useEffect, useState, Dispatch, SetStateAction
@@ -32,10 +33,19 @@ function WordCardEbook({
 
   const userDataInfo: object | null | string = localStorage.getItem('userData')
   // @ts-ignore
-  const { userId, refreshToken, token } = JSON.parse(userDataInfo)
   const [isInHardWord, setIsInHardWord] = useState(false)
   const [isLearnWord, setIsLearnWord] = useState(false)
   const [isBusy, setIsBusy] = useState(false)
+
+  let userId
+  let refreshToken
+  let token
+
+  if (userDataInfo) {
+    userId = JSON.parse(userDataInfo).userId
+    refreshToken = JSON.parse(userDataInfo).refreshToken
+    token = JSON.parse(userDataInfo).token
+  }
 
   useEffect(() => {
     if (userDataInfo) {
@@ -62,7 +72,7 @@ function WordCardEbook({
     }
   }, [status])
 
-  return (
+  return authStatus ? (
     <figure
       className={
         isInHardWord
@@ -89,6 +99,40 @@ function WordCardEbook({
           status={status}
           update={update}
           userData={{ userId, refreshToken, token }}
+        />
+      ) : (
+        ''
+      )}
+      <UpSideCard card={data} styleBg={`${styleBg}`} />
+      <BottomSideCard card={data} styleBg={`${styleBg}`} />
+    </figure>
+  ) : (
+    <figure
+      className={
+        isInHardWord
+          ? 'card active hard'
+          : isLearnWord
+            ? 'card active learnt'
+            : authStatus
+              ? 'card active'
+              : 'card'
+      }
+    >
+      {authStatus ? (
+        // @ts-ignore
+        <EBookWordBtns
+          data={data}
+          hardWord={isInHardWord}
+          hardWords={hardWords}
+          isBusy={isBusy}
+          isLearnWord={isLearnWord}
+          learntWords={learntWords}
+          setHardWord={setIsInHardWord}
+          setIsBusy={setIsBusy}
+          setIsLearnWord={setIsLearnWord}
+          setUpdate={setUpdate}
+          status={status}
+          update={update}
         />
       ) : (
         ''
