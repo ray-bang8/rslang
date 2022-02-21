@@ -8,7 +8,7 @@ async function postStatistics(userId, token, data) {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
         learnedWords: countLearntWords,
@@ -17,9 +17,9 @@ async function postStatistics(userId, token, data) {
           correctAnswers: countLearntWords,
           falseAnswers: countFalseWords,
           bestSeries: longSerie,
-          lastChange: date,
-        },
-      }),
+          lastChange: date
+        }
+      })
     }
   )
   const resData = await res.json()
