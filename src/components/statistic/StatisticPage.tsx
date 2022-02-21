@@ -22,13 +22,7 @@ export default function StatisticPage() {
               <td className="field__row-root data">0</td>
             </tr>
             <tr className="field__row">
-              <th className="field__row-root">Savanna</th>
-              <td className="field__row-root data">0</td>
-              <td className="field__row-root data">0%</td>
-              <td className="field__row-root data">0</td>
-            </tr>
-            <tr className="field__row">
-              <th className="field__row-root">My game</th>
+              <th className="field__row-root">Sprint</th>
               <td className="field__row-root data">0</td>
               <td className="field__row-root data">0%</td>
               <td className="field__row-root data">0</td>
@@ -42,6 +36,7 @@ export default function StatisticPage() {
           </tbody>
         </table>
       </div>
+      {/* <h3 className="stat-page__header all-time">Statistic for all time</h3> */}
     </div>
   )
 }

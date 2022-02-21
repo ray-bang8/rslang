@@ -1,5 +1,8 @@
 import React from 'react'
 import './AboutTeam.css'
+import arayImg from '../../img/aray.jpg'
+import elyorImg from '../../img/elyor.jpg'
+import shamshodImg from '../../img/shamshod.jpg'
 import Member from './Member'
 
 type MemberShip = {
@@ -16,26 +19,26 @@ function AboutTeam() {
     {
       name: 'Aray',
       position: ['TeamLeader', 'Front', 'Code-review'],
-      img: '',
+      img: arayImg,
       github: ['https://github.com/ray-bang8', 'ray-bang8'],
       parts: ['Games'],
       id: '18562841468'
     },
     {
-      name: 'Elyor',
-      position: ['Back', 'Front', 'Code-review'],
-      img: '',
-      github: ['https://github.com/elygo', 'elygo'],
-      parts: ['Book'],
-      id: '11322564858'
-    },
-    {
       name: 'Shamshod',
       position: ['Front', 'Code-review'],
-      img: '',
+      img: shamshodImg,
       github: ['https://github.com/ShamshodIsayev', 'shamshodisayev'],
       parts: ['Sprint'],
       id: '26735416389'
+    },
+    {
+      name: 'Elyor',
+      position: ['Back', 'Front', 'Code-review'],
+      img: elyorImg,
+      github: ['https://github.com/elygo', 'elygo'],
+      parts: ['Book'],
+      id: '11322564858'
     }
   ]
   return (

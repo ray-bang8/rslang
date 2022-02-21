@@ -45,8 +45,11 @@
 }
 
 .team-member__img {
-  border-radius: 75px;
-  width: 100%;
+  border-radius: 8px;
+  width: 150px;
+  object-fit: cover;
+  /* height: 80%; */
+  
 }
 
 .team-member__role {

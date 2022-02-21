@@ -6,7 +6,7 @@ export interface IUser {
 
 async function createUser(url: string, name: string, email: string, password: string) {
   try {
-    const response = await fetch(`${url}users`, {
+    await fetch(`${url}users`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -18,7 +18,7 @@ async function createUser(url: string, name: string, email: string, password: st
         password
       })
     })
-    const content = await response.json()
+    // const content = await response.json()
   } catch (error) {
     console.log(error)
   }

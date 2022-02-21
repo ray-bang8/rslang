@@ -2,6 +2,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Auth.css'
 import { signIn } from './Requests'
 
@@ -44,9 +45,8 @@ function FormLogin() {
         <input className="login" type="submit" value="Login" />
       </form>
       <div className="no-account">Have no account yet?</div>
-      <button className="to-register" type="button">
-        Registration
-      </button>
+      <Link to="/register"><button className="to-register" type="button">Registration </button>
+      </Link>
     </div>
   )
 }
