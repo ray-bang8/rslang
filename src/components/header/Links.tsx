@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import AuthButton from './AuthButton'
 
 function Links(props: any) {
   const { linkList } = props
@@ -19,6 +20,11 @@ function Links(props: any) {
       </li>
       <li className="nav__ul-li">
         <NavLink to="/about">About</NavLink>
+      </li>
+      <li className="nav__ul-li">
+        <NavLink to="/login">
+          <AuthButton />
+        </NavLink>
       </li>
     </ul>
   )

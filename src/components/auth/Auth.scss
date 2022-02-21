@@ -29,19 +29,14 @@
 
 .form-container {
   width: 40vw;
-  height: 100vh;
-  margin: auto;
-}
-
-.home-button {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  color: #828282;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
-  margin-top: 25%;
   margin-bottom: 10%;
   font-size: 24px;
 }
@@ -54,7 +49,6 @@
 }
 
 input {
-  width: 60%;
   padding: 10px;
   margin: 8px 0;
   font-size: 18px;
@@ -63,7 +57,7 @@ input {
 }
 
 .login {
-  width: 60%;
+  width: 100%;
   padding: 12px;
   margin: 30px 0;
   font-size: 18px;
