@@ -1,4 +1,6 @@
 import React, { useEffect, useState, KeyboardEventHandler } from 'react'
+import Footer from '../footer/Footer'
+import Header from '../header/Header'
 import SprintAddScore from './SprintAddScore'
 import SprintCheckResult from './SprintCheckResult'
 import SprintDeleteQuestion from './SprintDeleteQuestion'
@@ -8,6 +10,8 @@ import SprintSetTime from './SprintSetTime'
 import SprintSettings from './SprintSettings'
 import getRandomWord from './getRandomWord'
 import './sprint.scss'
+import putHardWords from './putHardWords'
+import putLearntWord from './putLearntWord'
 
 function SprintGame() {
   const [gameStatus, setGameStatus] = useState(false)
@@ -26,6 +30,8 @@ function SprintGame() {
   const [time, setTime] = useState(60)
   const [resultsBoolean, setResultsBoolean] = useState([])
   const [curPage, setCurPage] = useState(0)
+  const authenticated = localStorage.getItem('userData')
+
   const setNewWord = async(data: Array<Word>) => {
     if (results.length >= 20) {
       setEnd(true)
@@ -61,7 +67,6 @@ function SprintGame() {
         .then((el: Array<Word>) => {
           // @ts-ignore
           setData([...tempArr, ...el])
-          console.log(data)
 
           const randomWord = getRandomWord(resData) || {
             word: 'Loading'
@@ -72,7 +77,6 @@ function SprintGame() {
 
           const randomQuestion = getRandomWord(resData)
           setCurrentQuestion((randomQuestion as Word).wordTranslate)
-          console.log(data.length)
         })
     }
     handleUseEffect()
@@ -108,6 +112,13 @@ function SprintGame() {
 
       if (res) {
         setScoreLevel(0)
+
+        if (authenticated) {
+          // @ts-ignore
+          const { userId, token } = JSON.parse(authenticated)
+          putHardWords(userId, token, currentObject)
+        }
+
         if (audioStatus) {
           const audio = new Audio()
           audio.src = 'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
@@ -121,6 +132,13 @@ function SprintGame() {
           setScoreLevel,
           setScoreAddAnimation
         )
+
+        if (authenticated) {
+          // @ts-ignore
+          const { userId, token } = JSON.parse(authenticated)
+          putLearntWord(userId, token, currentObject)
+        }
+
         if (audioStatus) {
           const audio = new Audio()
           audio.src = 'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
@@ -156,6 +174,12 @@ function SprintGame() {
           setScoreLevel,
           setScoreAddAnimation
         )
+
+        if (authenticated) {
+          // @ts-ignore
+          const { userId, token } = JSON.parse(authenticated)
+          putLearntWord(userId, token, currentObject)
+        }
         if (audioStatus) {
           const audio = new Audio()
           audio.src = 'http://freesoundeffect.net/sites/default/files/correct-double-ding-04-sound-effect-74166871.mp3'
@@ -163,6 +187,13 @@ function SprintGame() {
         }
       } else {
         setScoreLevel(0)
+
+        if (authenticated) {
+          // @ts-ignore
+          const { userId, token } = JSON.parse(authenticated)
+          putHardWords(userId, token, currentObject)
+        }
+
         if (audioStatus) {
           const audio = new Audio()
           audio.src = 'http://freesoundeffect.net/sites/default/files/negative-game-hit-01-sound-effect-47344971.mp3'
@@ -207,6 +238,7 @@ function SprintGame() {
 
   return (
     <div>
+      <Header />
       <div
         className={gameStatus ? 'sprint-body active' : 'sprint-body'}
         onKeyDown={handleKeyBtn}
@@ -285,6 +317,7 @@ function SprintGame() {
           setTime={setTime}
         />
       )}
+      <Footer />
     </div>
   )
 }
