@@ -5,8 +5,8 @@ async function deleteWord(id, token, wordId) {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
+        'Authorization': `Bearer ${token}`
+      }
     }
   )
   return res

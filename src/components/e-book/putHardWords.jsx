@@ -7,9 +7,9 @@ function putHardWords(id, token, data) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ difficulty: 'hard', optional: data }),
+      body: JSON.stringify({ difficulty: 'hard', optional: data })
     }
   )
     .then((i) => i.json())

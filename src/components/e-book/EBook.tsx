@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Footer from '../footer/Footer'
-import Header from '../header/Header'
 import EBookCurrentPage from './EBookCurrentPage'
 import EBookNavigator from './EBookNavigator'
 import EBookNextPage from './EBookNextPage'
@@ -118,7 +116,6 @@ function EBook() {
 
   return (
     <div>
-      <Header />
       <div className="ebook-btns-wrapper">
         <div className="ebook-icon-top">E-book</div>
         {userDataInfo ? (
@@ -269,7 +266,6 @@ function EBook() {
       ) : (
         ''
       )}
-      <Footer />
     </div>
   )
 }
