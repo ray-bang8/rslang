@@ -27,6 +27,12 @@ export default function StatisticPage() {
               <td className="field__row-root data">0%</td>
               <td className="field__row-root data">0</td>
             </tr>
+            <tr className="field__row">
+              <th className="field__row-root">New words</th>
+              <td className="field__row-root data">0</td>
+              <td className="field__row-root data">0%</td>
+              <td className="field__row-root data">0</td>
+            </tr>
             <tr className="field__row last">
               <th className="field__row-root">Total</th>
               <td className="field__row-root data">0</td>

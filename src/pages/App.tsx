@@ -9,6 +9,7 @@ import Footer from '../components/footer/Footer'
 import Header from '../components/header/Header'
 import StatisticPage from '../components/statistic/StatisticPage'
 import AboutTeamPage from './AboutTeamPage'
+import AudioCallsPage from './AudioCallsPage'
 import AuthPage from './AuthPage'
 import ChooseGame from './ChooseGame'
 import EBookPage from './EBookPage'
@@ -31,6 +32,7 @@ function App() {
           <Route element={<StatisticPage />} path="/statistics" />
           <Route element={<MainPage />} path="/" />
           <Route element={<FormRegister />} path="/register" />
+          <Route element={<AudioCallsPage />} path="/audioCall" />
 
         </Routes>
         <Footer />
