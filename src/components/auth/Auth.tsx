@@ -1,5 +1,5 @@
 import React from 'react'
-import './Auth.css'
+import './Auth.scss'
 import FormLogin from './FormLogin'
 import SideBar from './SideBar'
 
