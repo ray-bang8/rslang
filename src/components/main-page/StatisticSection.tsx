@@ -1,8 +1,8 @@
 /* eslint-disable react/button-has-type */
 import React from 'react'
-import statBgImg from '../img/statBg.png'
-import statImg from '../img/statImg.png'
-import timerImg from '../img/timer.png'
+import statBgImg from '../../img/statBg.png'
+import statImg from '../../img/statImg.png'
+import timerImg from '../../img/timer.png'
 
 export default function StatisticSection() {
   return (
