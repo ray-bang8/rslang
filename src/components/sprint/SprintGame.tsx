@@ -10,8 +10,9 @@ import SprintSetTime from './SprintSetTime'
 import SprintSettings from './SprintSettings'
 import getRandomWord from './getRandomWord'
 import './sprint.scss'
+import postStatistics from './postStatistics'
 import putHardWords from './putHardWords'
-import putLearntWord from './putLearntWord'
+// import putLearntWord from './putLearntWord'
 
 function SprintGame() {
   const [gameStatus, setGameStatus] = useState(false)
@@ -31,11 +32,28 @@ function SprintGame() {
   const [resultsBoolean, setResultsBoolean] = useState([])
   const [curPage, setCurPage] = useState(0)
   const authenticated = localStorage.getItem('userData')
+  const [countLearntWords, setCountLearntWords] = useState(0)
+  const [countFalseWords, setCountFalsetWords] = useState(0)
+  const [longSerie, setLongSerie] = useState(0)
+  const [tempSerie, setTempSerie] = useState(0)
 
   const setNewWord = async(data: Array<Word>) => {
     if (results.length >= 20) {
       setEnd(true)
+
+      if (authenticated) {
+        const { userId, token } = JSON.parse(authenticated)
+        postStatistics(userId, token, {
+          countLearntWords,
+          countFalseWords,
+          longSerie
+        })
+      }
       setTime(0)
+      setLongSerie(0)
+      setTempSerie(0)
+      setCountLearntWords(0)
+      setCountFalsetWords(0)
     }
     const resWord = await getRandomWord(data)
     setCurrentObject(resWord)
@@ -76,7 +94,9 @@ function SprintGame() {
           }
 
           const randomQuestion = getRandomWord(resData)
-          setCurrentQuestion((randomQuestion as Word).wordTranslate)
+          if (randomQuestion) {
+            setCurrentQuestion((randomQuestion as Word).wordTranslate)
+          }
         })
     }
     handleUseEffect()
@@ -112,6 +132,8 @@ function SprintGame() {
 
       if (res) {
         setScoreLevel(0)
+        setTempSerie(0)
+        setCountFalsetWords(countFalseWords + 1)
 
         if (authenticated) {
           // @ts-ignore
@@ -133,10 +155,14 @@ function SprintGame() {
           setScoreAddAnimation
         )
 
+        if (longSerie < tempSerie) setLongSerie(tempSerie)
+        setCountLearntWords(countLearntWords + 1)
+        setTempSerie(tempSerie + 1)
+
         if (authenticated) {
           // @ts-ignore
-          const { userId, token } = JSON.parse(authenticated)
-          putLearntWord(userId, token, currentObject)
+          // const { userId, token } = JSON.parse(authenticated)
+          // putLearntWord(userId, token, currentObject)
         }
 
         if (audioStatus) {
@@ -174,11 +200,14 @@ function SprintGame() {
           setScoreLevel,
           setScoreAddAnimation
         )
+        setTempSerie(tempSerie + 1)
+        if (longSerie < tempSerie) setLongSerie(tempSerie)
+        setCountLearntWords(countLearntWords + 1)
 
         if (authenticated) {
           // @ts-ignore
-          const { userId, token } = JSON.parse(authenticated)
-          putLearntWord(userId, token, currentObject)
+          // const { userId, token } = JSON.parse(authenticated)
+          // putLearntWord(userId, token, currentObject)
         }
         if (audioStatus) {
           const audio = new Audio()
@@ -187,6 +216,8 @@ function SprintGame() {
         }
       } else {
         setScoreLevel(0)
+        setTempSerie(0)
+        setCountFalsetWords(countFalseWords + 1)
 
         if (authenticated) {
           // @ts-ignore
@@ -208,13 +239,15 @@ function SprintGame() {
   function handleKeyBtn(
     event: KeyboardEventHandler<HTMLDivElement> | KeyboardEvent | any
   ) {
-    // @ts-ignore
-    if (event.key === 'ArrowRight') {
-      handleTruebtn()
-    }
-    // @ts-ignore
-    if (event.key === 'ArrowLeft') {
-      handleFalseBtn()
+    if (!end) {
+      // @ts-ignore
+      if (event.key === 'ArrowRight') {
+        handleTruebtn()
+      }
+      // @ts-ignore
+      if (event.key === 'ArrowLeft') {
+        handleFalseBtn()
+      }
     }
   }
   function handleRepeatBtn() {
