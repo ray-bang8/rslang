@@ -19,15 +19,15 @@ const userData = {
   token:
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsImlhdCI6MTY0NTQ1NTgyMiwiZXhwIjoxNjQ1NDcwMjIyfQ.-kpgKu5ORtyGxJM1jo_Gqmh3tjxgBqtkccUIzPlaXxI',
   refreshToken:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsInRva2VuSWQiOiJlN2RjYWYzZC1kOTVlLTRjOWEtOWUwMi03N2VkZmJlMDI2ODAiLCJpYXQiOjE2NDUzNTAwMDksImV4cCI6MTY0NTM2NjIwOX0.CgaCT9lMkq09IpnGasYv_Rp63jscWOkgy7HJ8-m6ijw',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsInRva2VuSWQiOiJlN2RjYWYzZC1kOTVlLTRjOWEtOWUwMi03N2VkZmJlMDI2ODAiLCJpYXQiOjE2NDUzNTAwMDksImV4cCI6MTY0NTM2NjIwOX0.CgaCT9lMkq09IpnGasYv_Rp63jscWOkgy7HJ8-m6ijw'
 }
 
 function EBook() {
   const [data, setData] = useState([
     {
       word: 'Loading',
-      id: 0,
-    },
+      id: 0
+    }
   ])
 
   const [group, setGroup] = useState(1)
@@ -83,7 +83,7 @@ function EBook() {
     if (userDataInfo) {
       const {
         userId,
-        token,
+        token
         // @ts-ignore
       } = JSON.parse(userDataInfo)
 
@@ -181,25 +181,25 @@ function EBook() {
         )}
         {status === 'ebook'
           ? data.map((el) => (
-              <WordCardEbook
-                authStatus={authStatus}
-                data={el}
-                hardWords={hardWords}
-                key={el.id}
-                learntWords={learntWords}
-                setAuthStatus={setAuthStatus}
+            <WordCardEbook
+              authStatus={authStatus}
+              data={el}
+              hardWords={hardWords}
+              key={el.id}
+              learntWords={learntWords}
+              setAuthStatus={setAuthStatus}
                 // @ts-ignore
-                setHardWords={setHardWords}
-                setLearntWords={setLearntWords}
-                setUpdate={setUpdate}
-                showExampleText={showExampleText}
-                showExampleTranslate={showExampleTranslate}
-                showMeaningText={showMeaningText}
-                showMeaningTranslate={showMeaningTranslate}
-                status={status}
-                update={update}
-              />
-            ))
+              setHardWords={setHardWords}
+              setLearntWords={setLearntWords}
+              setUpdate={setUpdate}
+              showExampleText={showExampleText}
+              showExampleTranslate={showExampleTranslate}
+              showMeaningText={showMeaningText}
+              showMeaningTranslate={showMeaningTranslate}
+              status={status}
+              update={update}
+            />
+          ))
           : ''}
 
         {authStatus && status === 'hard' ? (
@@ -223,22 +223,22 @@ function EBook() {
 
         {status === 'learnt'
           ? learntWords.map((el) => (
-              // @ts-ignore
-              <WordCardEbook
-                authStatus={authStatus}
+            // @ts-ignore
+            <WordCardEbook
+              authStatus={authStatus}
                 // @ts-ignore
-                data={el.optional}
+              data={el.optional}
                 // @ts-ignore
-                key={el.id}
-                setAuthStatus={setAuthStatus}
-                setUpdate={setUpdate}
-                showExampleText={showExampleText}
-                showExampleTranslate={showExampleTranslate}
-                showMeaningText={showMeaningText}
-                showMeaningTranslate={showMeaningTranslate}
-                update={update}
-              />
-            ))
+              key={el.id}
+              setAuthStatus={setAuthStatus}
+              setUpdate={setUpdate}
+              showExampleText={showExampleText}
+              showExampleTranslate={showExampleTranslate}
+              showMeaningText={showMeaningText}
+              showMeaningTranslate={showMeaningTranslate}
+              update={update}
+            />
+          ))
           : ''}
 
         {status === 'ebook' ? (
