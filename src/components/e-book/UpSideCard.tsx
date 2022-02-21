@@ -18,10 +18,14 @@ type CardChunk = {
 interface propCardChunk {
   card: CardChunk
   styleBg: string
+  showExampleText: boolean
+  showMeaningText: boolean
 }
 
 function UpSideCard(props: propCardChunk) {
-  const { card, styleBg } = props
+  const {
+    card, styleBg, showExampleText, showMeaningText
+  } = props
   const {
     audio,
     audioExample,
@@ -42,6 +46,7 @@ function UpSideCard(props: propCardChunk) {
   const sound = new Audio()
 
   useEffect(() => {
+
     if (image) {
       setImg(image)
     }
@@ -79,14 +84,22 @@ function UpSideCard(props: propCardChunk) {
           </div>
         </div>
         {/*  eslint-disable react/no-danger  */}
-        <div
-          className="card__top-center"
-          dangerouslySetInnerHTML={{ __html: `${textMeaning}` }}
-        />
-        <div
-          className="card__top-end"
-          dangerouslySetInnerHTML={{ __html: `${textExample}` }}
-        />
+        {showMeaningText ? (
+          <div
+            className="card__top-center"
+            dangerouslySetInnerHTML={{ __html: `${textMeaning}` }}
+          />
+        ) : (
+          ''
+        )}
+        {showExampleText ? (
+          <div
+            className="card__top-end"
+            dangerouslySetInnerHTML={{ __html: `${textExample}` }}
+          />
+        ) : (
+          ''
+        )}
       </div>
       {/*  eslint-enable react/no-danger  */}
     </div>

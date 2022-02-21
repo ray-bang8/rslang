@@ -3,7 +3,7 @@ import '../styles/App.css'
 import {
   BrowserRouter as Router, Route, Routes
 } from 'react-router-dom'
-import Reg from '../components/auth/Reg'
+import FormRegister from '../components/auth/FormRegister'
 import Footer from '../components/footer/Footer'
 import Header from '../components/header/Header'
 import AboutTeamPage from './AboutTeamPage'
@@ -19,7 +19,7 @@ function App() {
         <Routes>
 
           {/* <Route element={<AuthPage />} path="/" /> */}
-          <Route element={<Reg />} path="/auth" />
+          <Route element={<FormRegister />} path="/auth" />
           <Route element={<AuthPage />} path="/login" />
           <Route element={<EBookPage />} path="/ebook" />
           <Route element={<AboutTeamPage />} path="/about" />
