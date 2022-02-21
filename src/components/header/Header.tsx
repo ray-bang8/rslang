@@ -3,7 +3,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
-import AuthButton from './AuthButton'
 import Links from './Links'
 
 const logo = require('../../img/logo.png')
@@ -31,8 +30,6 @@ function Header() {
         />
 
         <Links linkList={linkList} setLinkList={setLinkList} />
-
-        <AuthButton />
 
       </nav>
 

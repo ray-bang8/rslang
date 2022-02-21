@@ -1,5 +1,5 @@
 import React from 'react'
-import './Auth.css'
+import './Auth.scss'
 import FormLogin from './FormLogin'
 // import FormRegister from './FormRegister'
 import SideBar from './SideBar'
@@ -9,7 +9,6 @@ function Auth() {
     <div className="auth">
       <SideBar />
       <FormLogin />
-      {/* <FormRegister /> */}
     </div>
   )
 }

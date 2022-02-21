@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import AuthButton from './AuthButton'
+import Logout from './Logout'
 
 function Links(props: any) {
   const { linkList } = props
@@ -19,6 +21,17 @@ function Links(props: any) {
       </li>
       <li className="nav__ul-li">
         <NavLink to="/about">About</NavLink>
+      </li>
+      <li className="nav__ul-li">
+        {(JSON.parse(localStorage.getItem('userData')!).message === 'Authenticated' && JSON.parse(localStorage.getItem('userData')!).name) ? (
+          <NavLink to="/">
+            <Logout />
+          </NavLink>
+        ) : (
+          <NavLink to="/login">
+            <AuthButton />
+          </NavLink>
+        )}
       </li>
     </ul>
   )

@@ -1,11 +1,7 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
-import './Auth.css'
+import { useNavigate } from 'react-router-dom'
+import './Auth.scss'
 import { signIn } from './Requests'
-
-const timesIcon = faTimes as IconProp
 
 function FormLogin() {
   const baseUrl: string = 'https://rslang-team48.herokuapp.com/'
@@ -13,18 +9,23 @@ function FormLogin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const history = useNavigate()
   const handleLoginSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     await signIn(baseUrl, email, password)
     setEmail('')
     setPassword('')
+    if (JSON.parse(localStorage.getItem('userData')!).message === 'Authenticated') {
+      history('/')
+    }
+  }
+
+  const handleRoute = () => {
+    history('/auth')
   }
 
   return (
     <div className="form-container">
-      <div className="home-button">
-        <FontAwesomeIcon icon={timesIcon} size="2x" />
-      </div>
       <div className="title">Welcome</div>
       <form className="form" onSubmit={handleLoginSubmit}>
         <input
@@ -44,7 +45,7 @@ function FormLogin() {
         <input className="login" type="submit" value="Login" />
       </form>
       <div className="no-account">Have no account yet?</div>
-      <button className="to-register" type="button">
+      <button className="to-register" onClick={handleRoute} type="button">
         Registration
       </button>
     </div>
