@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react'
+/* eslint-disable no-nested-ternary */
+import React, {
+  useEffect, useState, Dispatch, SetStateAction
+} from 'react'
 import BottomSideCard from './BottomSideCard'
 import EBookWordBtns from './EBookWordBtns'
 import RandomBgColor from './RandomBgColor'
@@ -6,42 +9,163 @@ import UpSideCard from './UpSideCard'
 
 interface propCard {
   data: Card
+  authStatus: boolean
+  setAuthStatus: Dispatch<SetStateAction<boolean>>
+  status: string
+  hardWords: Array<Card>
+  learntWords: Array<object>
+  update: number
+  setUpdate: Dispatch<SetStateAction<number>>
+  showExampleText: boolean
+  showExampleTranslate: boolean
+  showMeaningTranslate: boolean
+  showMeaningText: boolean
 }
-const userData = {
-  message: 'Authenticated'
-}
-localStorage.setItem('userData', JSON.stringify(userData))
 
-function WordCardEbook(props: propCard) {
-  const { data } = props
+function WordCardEbook({
+  data,
+  authStatus,
+  setAuthStatus,
+  status,
+  hardWords,
+  learntWords,
+  update,
+  setUpdate,
+  showExampleText,
+  showExampleTranslate,
+  showMeaningTranslate,
+  showMeaningText
+}: propCard) {
   const styleBg = RandomBgColor()
-  const [authStatus, setAuthStatus] = useState(false)
 
-  const authenticated = localStorage.getItem('userData')
-  // const [aggregatedWords, setAggregatedWords] = useState([])
-  // const basicURL = 'https://rslang-team48.herokuapp.com/'
-  // const id = '620017fcc1edf60016d3eb88authenticated'
-  // // const { id } = authenticated
+  const userDataInfo: object | null | string = localStorage.getItem('userData')
+  // @ts-ignore
+  const [isInHardWord, setIsInHardWord] = useState(false)
+  const [isLearnWord, setIsLearnWord] = useState(false)
+  const [isBusy, setIsBusy] = useState(false)
+
+  let userId
+  let refreshToken
+  let token
+
+  if (userDataInfo) {
+    userId = JSON.parse(userDataInfo).userId
+    refreshToken = JSON.parse(userDataInfo).refreshToken
+    token = JSON.parse(userDataInfo).token
+  }
 
   useEffect(() => {
-    if (authenticated) {
+    if (userDataInfo) {
       setAuthStatus(true)
     }
-    //   fetch(`${basicURL}words/users/${id}/words`)
-    //   fetch(
-    //     'https://rslang-team48.herokuapp.com/users/620017fcc1edf60016d3eb88/words'
-    //   )
-    //     .then((i) => i.json())
-    //     .then((i) => {
-    //       console.log(i)
-    //     })
-  }, [])
+    if (hardWords) {
+      hardWords.map((el) => {
+        if (data.id === (el as WordData).wordId) {
+          setIsInHardWord(true)
+          setIsBusy(true)
+        }
+        return el
+      })
+    }
 
-  return (
-    <figure className={authStatus ? 'card active' : 'card'}>
-      <EBookWordBtns />
-      <UpSideCard card={data} styleBg={`${styleBg}`} />
-      <BottomSideCard card={data} styleBg={`${styleBg}`} />
+    if (learntWords) {
+      learntWords.map((el) => {
+        if (data.id === (el as WordData).wordId) {
+          setIsLearnWord(true)
+          setIsBusy(true)
+        }
+        return el
+      })
+    }
+  }, [status])
+
+  return authStatus ? (
+    <figure
+      className={
+        isInHardWord
+          ? 'card active hard'
+          : isLearnWord
+            ? 'card active learnt'
+            : authStatus
+              ? 'card active'
+              : 'card'
+      }
+    >
+      {authStatus ? (
+        <EBookWordBtns
+          data={data}
+          hardWord={isInHardWord}
+          hardWords={hardWords}
+          isBusy={isBusy}
+          isLearnWord={isLearnWord}
+          learntWords={learntWords}
+          setHardWord={setIsInHardWord}
+          setIsBusy={setIsBusy}
+          setIsLearnWord={setIsLearnWord}
+          setUpdate={setUpdate}
+          status={status}
+          update={update}
+          userData={{ userId, refreshToken, token }}
+        />
+      ) : (
+        ''
+      )}
+      <UpSideCard
+        card={data}
+        showExampleText={showExampleText}
+        showMeaningText={showMeaningText}
+        styleBg={`${styleBg}`}
+      />
+      <BottomSideCard
+        card={data}
+        showExampleTranslate={showExampleTranslate}
+        showMeaningTranslate={showMeaningTranslate}
+        styleBg={`${styleBg}`}
+      />
+    </figure>
+  ) : (
+    <figure
+      className={
+        isInHardWord
+          ? 'card active hard'
+          : isLearnWord
+            ? 'card active learnt'
+            : authStatus
+              ? 'card active'
+              : 'card'
+      }
+    >
+      {authStatus ? (
+        // @ts-ignore
+        <EBookWordBtns
+          data={data}
+          hardWord={isInHardWord}
+          hardWords={hardWords}
+          isBusy={isBusy}
+          isLearnWord={isLearnWord}
+          learntWords={learntWords}
+          setHardWord={setIsInHardWord}
+          setIsBusy={setIsBusy}
+          setIsLearnWord={setIsLearnWord}
+          setUpdate={setUpdate}
+          status={status}
+          update={update}
+        />
+      ) : (
+        ''
+      )}
+      <UpSideCard
+        card={data}
+        showExampleText={showExampleText}
+        showMeaningText={showMeaningText}
+        styleBg={`${styleBg}`}
+      />
+      <BottomSideCard
+        card={data}
+        showExampleTranslate={showExampleTranslate}
+        showMeaningTranslate={showMeaningTranslate}
+        styleBg={`${styleBg}`}
+      />
     </figure>
   )
 }
@@ -64,4 +188,9 @@ type Card = {
   word?: string
   wordTranslate?: string
   data?: object | string
+}
+
+type WordData = {
+  difficulty: string
+  wordId: string
 }

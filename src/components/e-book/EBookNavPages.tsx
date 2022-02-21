@@ -13,7 +13,7 @@ function EBookNavPages(props: NavPageProps) {
     localStorage.setItem('navStatus', `${false}`)
   }
   const pages: Array<{ id: number; num: number }> = []
-  const maxSizePages = 31
+  const maxSizePages = 30
 
   for (let i = 0; i < maxSizePages; i++) {
     const pageObject = {
