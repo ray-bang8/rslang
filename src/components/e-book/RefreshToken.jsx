@@ -6,8 +6,8 @@ function RefreshToken(id, refreshToken) {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${refreshToken}`,
-      },
+        'Authorization': `Bearer ${refreshToken}`
+      }
     }
   )
     .then((i) => i.json())

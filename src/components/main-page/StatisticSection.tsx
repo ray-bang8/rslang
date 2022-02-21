@@ -1,5 +1,6 @@
 /* eslint-disable react/button-has-type */
 import React from 'react'
+import { Link } from 'react-router-dom'
 import statBgImg from '../../img/statBg.png'
 import statImg from '../../img/statImg.png'
 import timerImg from '../../img/timer.png'
@@ -16,7 +17,7 @@ export default function StatisticSection() {
         </div>
         <div className="rightStatField">
           <h2 className="rightText">Check your progress</h2>
-          <button className="statsBtn">Stats</button>
+          <Link to="/statistics"><button className="statsBtn">Stats</button></Link>
         </div>
       </div>
 

@@ -3,7 +3,7 @@ import SprintGame from '../components/sprint/SprintGame'
 
 function SprintGamePage() {
   return (
-    <div>
+    <div className="sprintSection">
       <SprintGame />
     </div>
   )

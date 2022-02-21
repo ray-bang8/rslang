@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import './Auth.scss'
 import { signIn } from './Requests'
 
@@ -47,9 +47,7 @@ function FormLogin() {
         <input className="login" type="submit" value="Login" />
       </form>
       <div className="no-account">Have no account yet?</div>
-      <button className="to-register" onClick={handleRoute} type="button">
-        Registration
-      </button>
+      <Link to="/register"><button className="to-register" onClick={handleRoute} type="button">Registration</button></Link>
     </div>
   )
 }

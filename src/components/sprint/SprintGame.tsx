@@ -1,6 +1,4 @@
 import React, { useEffect, useState, KeyboardEventHandler } from 'react'
-import Footer from '../footer/Footer'
-import Header from '../header/Header'
 import SprintAddScore from './SprintAddScore'
 import SprintCheckResult from './SprintCheckResult'
 import SprintDeleteQuestion from './SprintDeleteQuestion'
@@ -271,7 +269,6 @@ function SprintGame() {
 
   return (
     <div>
-      <Header />
       <div
         className={gameStatus ? 'sprint-body active' : 'sprint-body'}
         onKeyDown={handleKeyBtn}
@@ -350,7 +347,6 @@ function SprintGame() {
           setTime={setTime}
         />
       )}
-      <Footer />
     </div>
   )
 }

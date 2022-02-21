@@ -1,5 +1,6 @@
 .auth {
   display: flex;
+  text-align: center;
 }
 
 .sidebar {
@@ -28,6 +29,7 @@
 }
 
 .form-container {
+  text-align: center;
   width: 40vw;
   height: 90vh;
   display: flex;
@@ -39,9 +41,11 @@
 .title {
   margin-bottom: 10%;
   font-size: 24px;
+  text-align: center;
 }
 
 .form {
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,10 +75,12 @@ input {
 }
 
 .no-account {
+  text-align: center;
   color: #828282;
 }
 
 .to-register {
+  text-align: center;
   width: 60%;
   padding: 12px;
   margin: 30px 0;
@@ -97,6 +103,7 @@ input {
 
   .form-container {
     width: 50vw;
+    text-align: center;
   }
 }
 
@@ -106,6 +113,7 @@ input {
   }
 
   .form-container {
+    text-align: center;
     width: 60vw;
   }
 }

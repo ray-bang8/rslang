@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import audioCallImg from '../../img/audiocall.png'
 import gamesBgImg from '../../img/gamesbg.png'
 import sprintImg from '../../img/sprint.png'
@@ -13,8 +14,8 @@ export default function GamesSection() {
           <h2 className="leftText">Play a game, <br /> improve your <br /> skills</h2>
         </div>
         <div className="rightField">
-          <img alt="" className="rightImg first" src={audioCallImg} />
-          <img alt="" className="rightImg second" src={sprintImg} />
+          <Link to="/audioCall"><img alt="audio" className="rightImg first" src={audioCallImg} /></Link>
+          <Link to="/sprint"><img alt="sprint" className="rightImg second" src={sprintImg} /></Link>
         </div>
       </div>
 

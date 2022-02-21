@@ -7,9 +7,9 @@ async function putLearntWord(id, token, data) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ difficulty: 'learnt', optional: data }),
+      body: JSON.stringify({ difficulty: 'learnt', optional: data })
     }
   )
     .then((i) => i.json())

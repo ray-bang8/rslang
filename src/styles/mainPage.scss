@@ -192,7 +192,7 @@ main {
     }
     .statBgImg {
         position: absolute;
-        top: 93px;
+        top: 0;
         right: 0;
         pointer-events: none;
     }
@@ -208,12 +208,12 @@ main {
 
             .timerImg {
                 position: absolute;
-                top: -30px;
+                top: 10px;
                 left: 0;
             }
             .statImg {
                 position: absolute;
-                top: -30px;
+                top: 10px;
                 right: 0;
             }
         }
@@ -230,7 +230,7 @@ main {
                 font-weight: 400;
                 font-size: 48px;
                 line-height: 72px;
-               
+                margin-bottom: 20px;
                 
             }
             .statsBtn{
@@ -246,15 +246,17 @@ main {
                 font-size: 40px;
                 line-height: 72px;
                 text-align: center;
+                
             }
         }
     }
 }
 .aboutSection {
     height: 623px;
+
     
     .aboutBody {
-        
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -267,6 +269,7 @@ main {
         line-height: 48px;
         text-align: center;
         color: #FE5244;
+        margin-bottom: 40px;
 
     }
     .aboutText {
@@ -276,6 +279,7 @@ main {
         font-size: 48px;
         line-height: 72px;
         text-align: center;
+        margin-bottom: 20px;
     }
 
     .teamBtn {
@@ -294,4 +298,114 @@ main {
 
     }
 }
+}
+.stat-page {
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 130px;
+    .stat-page__header {
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 48px;
+        margin-top: 20px;
+        line-height: 72px;
+        text-align: center;
+    }
+
+    .stat-table {
+        width: 100%;
+        margin: 32px auto;
+        display: flex;
+        overflow: auto;
+        align-items: center;
+        justify-content: center;
+
+        .stat-table__body {
+            width: 100%;
+            display: table;
+            border-spacing: 0;
+            border-collapse: collapse;
+
+            .stat-table__head {
+                display: table-header-group;
+
+                .stat-table__row {
+                    background-color:  #FFF1F0;
+
+                    .row__head {
+                        font-family: 'Titillium Web', sans-serif;
+                        font-weight: 400;
+                        font-style: normal;
+                        font-size: 1.5rem;
+                        // line-height: 1.5rem;
+                        // padding: 6px 24px 6px 10px;
+                        letter-spacing: 0.01071em;
+                        vertical-align: inherit;
+                    }
+                }
+            }
+            .stat-table__field {
+                display: table-row-group;
+
+                .field__row {
+                    color: inherit;
+                    display: table-row;
+                    outline: 0;
+                    vertical-align: middle;
+
+                    .field__row-root {
+                        padding: 6px 24px 6px 16px;
+                        display: table-cell;
+                        font-size: 1.3rem;
+                        font-family: 'Titillium Web', sans-serif;
+                        font-weight: 400;
+                        border-bottom: 1px solid rgba(224,224,224,1);
+                        letter-spacing: 0.01071em;
+                        vertical-align: inherit;
+                        line-height: 1.43;
+                
+
+                    }
+                    
+                    .data {
+                        text-align: center;
+                    }
+                  
+                }
+                tr:last-child {
+                    background-color:  #FFF1F0;
+                }
+            }
+        }
+        .table {
+            max-width: 800px;
+            min-width: 464px;
+        }
+
+    }
+}
+.choose-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55vh;
+
+    .first {
+        position: relative;
+        left: -20px;
+        transition: 1s ease;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    .second {
+        position: relative;
+        transition: 1s ease;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
 }

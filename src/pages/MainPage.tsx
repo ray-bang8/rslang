@@ -6,6 +6,7 @@ import MainSection from '../components/main-page/MainSection'
 import StatisticSection from '../components/main-page/StatisticSection'
 
 function MainPage() {
+  console.log('проверьте пожалуйста чуть позже,доделываю проект')
   return (
     <main>
       <MainSection />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function AuthButton() {
   const [value, setValue] = useState(false)
@@ -17,7 +17,8 @@ function AuthButton() {
 
   return (
     <div className="auth-block">
-      <button className="log" onClick={clearStorage} type="button">{value ? 'Logout' : 'Login' }</button>
+      <Link to="/auth"><button className="log" onClick={clearStorage} type="button">{value ? 'Logout' : 'Login' }</button>
+      </Link>
     </div>
   )
 }
