@@ -15,9 +15,11 @@ function FormLogin() {
     await signIn(baseUrl, email, password)
     setEmail('')
     setPassword('')
-    if (JSON.parse(localStorage.getItem('userData')!).message === 'Authenticated') {
+    if (localStorage.getItem('userData') !== null) {
       history('/')
     }
+    window.location.reload()
+    return false
   }
 
   const handleRoute = () => {
