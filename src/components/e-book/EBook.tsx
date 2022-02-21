@@ -6,6 +6,7 @@ import EBookNavigator from './EBookNavigator'
 import EBookNextPage from './EBookNextPage'
 import EBookPrevPage from './EBookPrevPage'
 import EbookBtn from './EbookBtn'
+import EbookSettings from './EbookSettings'
 import HardWordBlock from './HardWordBlock'
 import HardWords from './HardWords'
 import WordCardEbook from './WordCardEbook'
@@ -16,7 +17,7 @@ const userData = {
   message: 'Authenticated',
   userId: '620e40398872720016070592',
   token:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsImlhdCI6MTY0NTM4MjQ5OSwiZXhwIjoxNjQ1Mzk2ODk5fQ.J2GP18nhVHsH1fKj7ozGYIdEOXNeQW0MGvXR2PUCLx8',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsImlhdCI6MTY0NTQzMzYxMiwiZXhwIjoxNjQ1NDQ4MDEyfQ.Ap94RCAtobmuezekq1-BiEBhKTLkgqfr6dwwI23ujXI',
   refreshToken:
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGU0MDM5ODg3MjcyMDAxNjA3MDU5MiIsInRva2VuSWQiOiJlN2RjYWYzZC1kOTVlLTRjOWEtOWUwMi03N2VkZmJlMDI2ODAiLCJpYXQiOjE2NDUzNTAwMDksImV4cCI6MTY0NTM2NjIwOX0.CgaCT9lMkq09IpnGasYv_Rp63jscWOkgy7HJ8-m6ijw'
 }
@@ -37,6 +38,11 @@ function EBook() {
   const [learntWords, setLearntWords] = useState([])
   const [hardWords, setHardWords] = useState([])
   const [update, setUpdate] = useState(0)
+  const [showExampleText, setShowExampleText] = useState(true)
+  const [showMeaningText, setShowMeaningText] = useState(true)
+  const [showExampleTranslate, setShowExampleTranslate] = useState(true)
+  const [showMeaningTranslate, setShowMeaningTranslate] = useState(true)
+  const [activeSettings, setActiveSettings] = useState(false)
 
   const userDataInfo = localStorage.getItem('userData')
   let userId: any
@@ -114,10 +120,15 @@ function EBook() {
     }
   }, [update])
 
+  const handleSettingsBtn = () => {
+    setActiveSettings(!activeSettings)
+  }
+
   return (
     <div>
       <Header />
       <div className="ebook-btns-wrapper">
+        <div className="ebook-icon-top">E-book</div>
         {userDataInfo ? (
           <EbookBtn
             btnName="Ebook Words"
@@ -148,6 +159,15 @@ function EBook() {
         ) : (
           ''
         )}
+        <div className="settings">
+          <img
+            alt="settings"
+            className="settings-icon"
+            onClick={handleSettingsBtn}
+            role="presentation"
+            src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-gear-512.png"
+          />
+        </div>
       </div>
       <div className="cards-wrapper">
         {navStatus ? (
@@ -172,6 +192,10 @@ function EBook() {
               setHardWords={setHardWords}
               setLearntWords={setLearntWords}
               setUpdate={setUpdate}
+              showExampleText={showExampleText}
+              showExampleTranslate={showExampleTranslate}
+              showMeaningText={showMeaningText}
+              showMeaningTranslate={showMeaningTranslate}
               status={status}
               update={update}
             />
@@ -185,6 +209,10 @@ function EBook() {
             setAuthStatus={setAuthStatus}
             setHardWords={setHardWords}
             setUpdate={setUpdate}
+            showExampleText={showExampleText}
+            showExampleTranslate={showExampleTranslate}
+            showMeaningText={showMeaningText}
+            showMeaningTranslate={showMeaningTranslate}
             status={status}
             update={update}
             userData={{ userId, refreshToken, token }}
@@ -204,6 +232,10 @@ function EBook() {
               key={el.id}
               setAuthStatus={setAuthStatus}
               setUpdate={setUpdate}
+              showExampleText={showExampleText}
+              showExampleTranslate={showExampleTranslate}
+              showMeaningText={showMeaningText}
+              showMeaningTranslate={showMeaningTranslate}
               update={update}
             />
           ))
@@ -230,6 +262,21 @@ function EBook() {
           ''
         )}
       </div>
+      {activeSettings ? (
+        <EbookSettings
+          setActiveSettings={setActiveSettings}
+          setShowExampleText={setShowExampleText}
+          setShowExampleTranslate={setShowExampleTranslate}
+          setShowMeaningText={setShowMeaningText}
+          setShowMeaningTranslate={setShowMeaningTranslate}
+          showExampleText={showExampleText}
+          showExampleTranslate={showExampleTranslate}
+          showMeaningText={showMeaningText}
+          showMeaningTranslate={showMeaningTranslate}
+        />
+      ) : (
+        ''
+      )}
       <Footer />
     </div>
   )

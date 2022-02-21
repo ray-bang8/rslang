@@ -19,16 +19,25 @@ function EbookBtn({
   const btns = document.querySelectorAll('.ebook-btns')
   for (let i = 0; i < btns.length; i++) {
     if (btns[i].textContent === 'Ebook Words') {
+      (btns[i] as HTMLElement).style.boxShadow = '2px 4px 13px 0px black';
       (btns[i] as HTMLElement).style.backgroundColor = ''
     } else if (btns[i].textContent === 'Learnt Words') {
-      (btns[i] as HTMLElement).style.backgroundColor = 'green'
+      (btns[i] as HTMLElement).style.backgroundColor = 'green';
+      (btns[i] as HTMLElement).style.boxShadow = '2px 4px 13px 0px black';
+      (btns[i] as HTMLElement).style.color = 'white'
     } else if (btns[i].textContent === 'Difficult Words') {
-      (btns[i] as HTMLElement).style.backgroundColor = '#ff253a'
+      (btns[i] as HTMLElement).style.backgroundColor = '#ff253a';
+      (btns[i] as HTMLElement).style.color = 'white';
+      (btns[i] as HTMLElement).style.boxShadow = '2px 4px 13px 0px black'
     }
   }
 
   return (
-    <button className="ebook-btns" onClick={handleEbookBtn} type="button">
+    <button
+      className="ebook-btns pad-btn"
+      onClick={handleEbookBtn}
+      type="button"
+    >
       {btnName}
     </button>
   )

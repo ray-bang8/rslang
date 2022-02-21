@@ -1,4 +1,3 @@
-/* eslint-disable prefer-destructuring */
 /* eslint-disable no-nested-ternary */
 import React, {
   useEffect, useState, Dispatch, SetStateAction
@@ -17,6 +16,10 @@ interface propCard {
   learntWords: Array<object>
   update: number
   setUpdate: Dispatch<SetStateAction<number>>
+  showExampleText: boolean
+  showExampleTranslate: boolean
+  showMeaningTranslate: boolean
+  showMeaningText: boolean
 }
 
 function WordCardEbook({
@@ -27,7 +30,11 @@ function WordCardEbook({
   hardWords,
   learntWords,
   update,
-  setUpdate
+  setUpdate,
+  showExampleText,
+  showExampleTranslate,
+  showMeaningTranslate,
+  showMeaningText
 }: propCard) {
   const styleBg = RandomBgColor()
 
@@ -103,8 +110,18 @@ function WordCardEbook({
       ) : (
         ''
       )}
-      <UpSideCard card={data} styleBg={`${styleBg}`} />
-      <BottomSideCard card={data} styleBg={`${styleBg}`} />
+      <UpSideCard
+        card={data}
+        showExampleText={showExampleText}
+        showMeaningText={showMeaningText}
+        styleBg={`${styleBg}`}
+      />
+      <BottomSideCard
+        card={data}
+        showExampleTranslate={showExampleTranslate}
+        showMeaningTranslate={showMeaningTranslate}
+        styleBg={`${styleBg}`}
+      />
     </figure>
   ) : (
     <figure
@@ -137,8 +154,18 @@ function WordCardEbook({
       ) : (
         ''
       )}
-      <UpSideCard card={data} styleBg={`${styleBg}`} />
-      <BottomSideCard card={data} styleBg={`${styleBg}`} />
+      <UpSideCard
+        card={data}
+        showExampleText={showExampleText}
+        showMeaningText={showMeaningText}
+        styleBg={`${styleBg}`}
+      />
+      <BottomSideCard
+        card={data}
+        showExampleTranslate={showExampleTranslate}
+        showMeaningTranslate={showMeaningTranslate}
+        styleBg={`${styleBg}`}
+      />
     </figure>
   )
 }

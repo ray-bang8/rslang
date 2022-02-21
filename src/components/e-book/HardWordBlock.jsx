@@ -11,11 +11,14 @@ function HardWordBlock({
   setAuthStatus,
   setUpdate,
   update,
+  showExampleText,
+  showExampleTranslate,
+  showMeaningText,
+  showMeaningTranslate
 }) {
   const { userId, refreshToken, token } = userData
 
-  useEffect(() => {
-  }, [])
+  useEffect(() => {}, [])
   return hardWords.map((el) => (
     <WordCardEbook
       authStatus={authStatus}
@@ -24,6 +27,10 @@ function HardWordBlock({
       key={el.optional.id}
       setAuthStatus={setAuthStatus}
       setUpdate={setUpdate}
+      showExampleText={showExampleText}
+      showExampleTranslate={showExampleTranslate}
+      showMeaningText={showMeaningText}
+      showMeaningTranslate={showMeaningTranslate}
       status={status}
       update={update}
     />

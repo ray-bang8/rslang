@@ -22,7 +22,8 @@ body {
 
 .card {
   width: 30%;
-  height: 380px;
+  // height: 380px;
+  min-height: 275px;
   margin: 0;
   margin-bottom: 3%;
   border-radius: 10px;
@@ -263,14 +264,97 @@ body {
   height: 34px;
   border-radius: 5px;
   margin: 0.5% 1%;
-  // background-color: #fe5244;
   cursor: pointer;
+  border: none;
+}
+
+.pad-btn {
+  transition: 0.5s;
+  box-shadow: 2px 4px 13px 0px;
+}
+
+.pad-btn:active {
+  box-shadow: none;
+}
+
+.pad-btn:hover {
+  box-shadow: none;
+  filter: contrast(2);
 }
 
 .ebook-btns-wrapper {
   display: flex;
-  width: 50%;
+  width: 100%;
+  padding: 0 30%;
   margin: 15px auto;
+  position: relative;
+}
+
+.ebook-icon-top {
+  position: absolute;
+  left: 1.5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 900;
+  color: tomato;
+  font-size: 30px;
+  // text-transform: uppercase;
+}
+
+.settings{
+  min-height: 50px;
+}
+
+.settings-icon {
+  width: 50px;
+  cursor: pointer;
+  position: absolute;
+  right: 2%;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.settings-icon:hover {
+  // background-color: tomato;
+  transform: rotate(40deg);
+}
+
+.settings-category {
+  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: tomato;
+  z-index: 999;
+  border-radius: 20px;
+}
+
+.settings-category__wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 5% 28%;
+}
+
+.settings__block {
+  display: flex;
+  gap: 2%;
+  align-items: center;
+  margin: 3% auto;
+}
+
+.settings__close-icon {
+  position: absolute;
+  top: 1%;
+  right: 3%;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 27px;
+}
+
+.settings__close-icon:hover {
+  text-shadow: 2px 2px 7px;
 }
 
 @media (max-width: 1400px) {
