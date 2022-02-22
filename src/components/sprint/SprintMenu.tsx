@@ -37,29 +37,31 @@ function SprintMenu({
           Trains the skill of quick translation from English into Russian. You
           need to choose whether the translation matches the suggested word
         </p>
-        <select
-          className="sprint-menu__select"
-          defaultValue="selected"
-          // @ts-ignore
-          onClick={handleSelect}
-        >
-          <option disabled={true} value="selected">
-            Select level
-          </option>
-          <option value="0">1</option>
-          <option value="1">2</option>
-          <option value="2">3</option>
-          <option value="3">4</option>
-          <option value="4">5</option>
-          <option value="5">6</option>
-        </select>
-        <button
-          className="sprint-menu__start-btn"
-          onClick={handleStartBtn}
-          type="button"
-        >
-          START
-        </button>
+        <div className="sprint-menu__btns">
+          <select
+            className="sprint-menu__select"
+            defaultValue="selected"
+            // @ts-ignore
+            onClick={handleSelect}
+          >
+            <option disabled={true} value="selected">
+              Select level
+            </option>
+            <option value="0">1</option>
+            <option value="1">2</option>
+            <option value="2">3</option>
+            <option value="3">4</option>
+            <option value="4">5</option>
+            <option value="5">6</option>
+          </select>
+          <button
+            className="sprint-menu__start-btn"
+            onClick={handleStartBtn}
+            type="button"
+          >
+            START
+          </button>
+        </div>
       </div>
     </div>
   )

@@ -156,6 +156,11 @@
   color: tomato;
 }
 
+.sprint-menu__btns {
+  display: flex;
+  align-items: center;
+}
+
 .sprint-menu__select {
   width: 120px;
   height: 25px;
