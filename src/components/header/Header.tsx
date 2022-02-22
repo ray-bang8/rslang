@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import AuthButton from './AuthButton'
 import Links from './Links'
