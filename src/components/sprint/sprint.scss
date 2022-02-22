@@ -28,12 +28,10 @@
   width: 65vw;
   border: 0.2px solid grey;
   padding: 2%;
-  backdrop-filter: blur(1px);
   position: absolute;
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #ffffff38;
 }
 
 .sprint__table {
@@ -153,7 +151,6 @@
 
 // sprint-menu
 .sprint-menu {
-  
   width: 50vw;
   margin: auto auto 5%;
 }
@@ -163,7 +160,6 @@
   margin-bottom: 20px;
   font-size: 28px;
   color: tomato;
- 
 }
 .sprint-menu__des {
   font-family: 'Titillium Web', sans-serif;
@@ -309,8 +305,8 @@
 .opacitied {
   position: fixed;
   width: 100%;
-  height: 100vh;
-  top: 0;
+  height: 90vh;
+  top: 10vh;
   left: 0;
 }
 
