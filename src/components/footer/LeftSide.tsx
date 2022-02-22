@@ -8,8 +8,8 @@ function LeftSide() {
       <div className="left__wrapper">
         <img alt="logo" className="left__img" src={img} />
         <p className="left__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt.
+          This is a prototype of language learning platform
+          which is developed by the team of young enthusiasts
         </p>
       </div>
     </div>

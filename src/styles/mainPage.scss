@@ -6,7 +6,6 @@ main {
   align-items: center;
   // width: 1440px;
   .container {
-    max-width: 1440px;
     width: 100%;
     margin-top: 45px;
   }
@@ -159,13 +158,13 @@ main {
       .first {
         position: absolute;
         top: 0;
-        left: -30px;
         width: 50%;
       }
       .second {
         position: absolute;
         top: 132px;
         right: 30px;
+        width: 50%;
       }
     }
   }
@@ -481,5 +480,15 @@ main {
   .statSection .statText,
   .aboutSection .aboutBody .aboutHeader {
     font-size: 53px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  main {
+    // width: 1440px;
+    .container {
+      width: 100%;
+      margin-top: 45px;
+    }
   }
 }
