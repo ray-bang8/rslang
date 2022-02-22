@@ -1,4 +1,5 @@
 import React from 'react'
+
 import RoleBlock from './RoleBlock'
 
 type MemberShip = {
@@ -32,7 +33,7 @@ function Member(props: Members) {
       />
       <h5 className="team-member__name">{name}</h5>
       <RoleBlock role={position} />
-      <a href={gitHubLink}>{gitHubId} </a>
+      <a className="team-member__hub" href={gitHubLink}>{gitHubId} </a>
     </figure>
   )
 }

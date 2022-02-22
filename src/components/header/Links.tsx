@@ -23,7 +23,7 @@ function Links(props: any) {
       </li>
       {/* <li className="nav__ul-li"> */}
       {/* </li> */}
-   
+
     </ul>
   )
 }

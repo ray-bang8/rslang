@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@200;400;500&family=Titillium+Web&display=swap');
 * {
   text-decoration: none;
   list-style: none;
@@ -7,13 +8,20 @@
 .team {
   min-height: 80vh;
   width: 100%;
-  background-image: url('../../img/mainBg.png');
+  /* background-image: url('../../img/team.svg'); */
   background-size: 50%;
   background-position: left;
   background-repeat: no-repeat;
   padding-top: 1vh;
   background-attachment: fixed;
+
+ 
 }
+
+.teamImg {
+  /* background-image: url('../../img/team.svg'); */
+ 
+} 
 
 .team-title {
   font-family: Arial, Helvetica, sans-serif;
@@ -39,11 +47,15 @@
   min-width: 270px;
   margin-bottom: 30px;
   text-align: center;
+  
 }
 
 .team-member__name {
   font-size: 28px;
   margin-top: 6%;
+}
+.team-member__hub {
+  color: black;
 }
 
 .team-member__img {
@@ -62,9 +74,13 @@
 }
 
 .team-member__role span {
-  background-color: coral;
+  background-color: #fe5244;
+  color: white;
   padding: 5px;
+  width: 100px;
   border-radius: 10px;
+  font-family: 'Titillium Web', sans-serif;
+  font-style: normal;
   margin: 0 5px;
 }
 
