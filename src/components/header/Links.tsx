@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import AuthButton from './AuthButton'
 
 function Links(props: any) {
   const { linkList } = props
@@ -23,7 +22,6 @@ function Links(props: any) {
       </li>
       {/* <li className="nav__ul-li"> */}
       {/* </li> */}
-   
     </ul>
   )
 }
