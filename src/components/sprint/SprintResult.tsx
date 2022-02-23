@@ -44,6 +44,8 @@ function SprintResult({ results, resultsBoolean }: Results | empty) {
     sound.play()
   }
 
+  const calculateKey = (num: number) => Math.random() * num * 2 * Math.random()
+
   return (
     <div className="results">
       <h3 className="result__title">
@@ -55,15 +57,15 @@ function SprintResult({ results, resultsBoolean }: Results | empty) {
           <tr>
             <th>Word</th>
             <th>Translate</th>
-            <th>Transcription</th>
+            <th className="result__table-transcript">Transcription</th>
             <th>Result</th>
             <th>Listen</th>
           </tr>
           {results.map((el: Word) => (
-            <tr key={el.id}>
-              <td>{el.word}</td>
+            <tr key={calculateKey(5)}>
+              <td key={calculateKey(1)}>{el.word}</td>
               <td>{el.wordTranslate}</td>
-              <td>{el.transcription}</td>
+              <td className="result__table-transcript">{el.transcription}</td>
               <td>
                 {String(el.result) === 'true' ? (
                   <FontAwesomeIcon className="true-icon" icon={checkIcon} />

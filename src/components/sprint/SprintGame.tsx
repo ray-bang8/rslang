@@ -34,6 +34,7 @@ function SprintGame() {
   const [countFalseWords, setCountFalsetWords] = useState(0)
   const [longSerie, setLongSerie] = useState(0)
   const [tempSerie, setTempSerie] = useState(0)
+  const [started, setStarted] = useState(false)
 
   const setNewWord = async(data: Array<Word>) => {
     if (results.length >= 20) {
@@ -47,12 +48,14 @@ function SprintGame() {
           longSerie
         })
       }
+
       setTime(0)
       setLongSerie(0)
       setTempSerie(0)
       setCountLearntWords(0)
       setCountFalsetWords(0)
     }
+
     const resWord = await getRandomWord(data)
     setCurrentObject(resWord)
 
@@ -63,6 +66,10 @@ function SprintGame() {
   }
 
   useEffect(() => {
+    if (!started) {
+      handleRepeatBtn()
+    }
+
     async function handleUseEffect() {
       let tempArr: Array<Word> = []
       const randomPage = +(Math.random() * 5).toFixed()
@@ -71,6 +78,7 @@ function SprintGame() {
       const res = await fetch(
         `https://rslang-team48.herokuapp.com/words?group=${group}&page=${randomPage}`
       )
+
       const resData = await res.json()
       tempArr = resData
 
@@ -88,7 +96,10 @@ function SprintGame() {
             word: 'Loading'
           }
           if (randomWord) {
-            setNewWord(resData)
+            if (!started) {
+              setNewWord(resData)
+              setStarted(true)
+            }
           }
 
           const randomQuestion = getRandomWord(resData)
@@ -98,13 +109,14 @@ function SprintGame() {
         })
     }
     handleUseEffect()
-  }, [page, group, end])
+  }, [page, group])
 
   async function handleNextWord() {
     SprintDeleteQuestion(data, currentWord)
 
     if (data) {
       setNewWord(data)
+
       const randomQuestion = getRandomWord(data)
       if (randomQuestion) {
         setCurrentQuestion((randomQuestion as Word).wordTranslate)
@@ -112,7 +124,9 @@ function SprintGame() {
     }
   }
 
-  function handleFalseBtn() {
+  function handleFalseBtn(e: React.MouseEvent | KeyboardEvent) {
+    e.preventDefault()
+
     if (currentObject) {
       const res = SprintCheckResult(
         currentObject as Word,
@@ -126,7 +140,7 @@ function SprintGame() {
       // @ts-ignore
       resultsBoolean.push(resultObject.result)
       // @ts-ignore
-      results.push(resultObject)
+      if (data) results.push(resultObject)
 
       if (res) {
         setScoreLevel(0)
@@ -173,7 +187,8 @@ function SprintGame() {
     handleNextWord()
   }
 
-  function handleTruebtn() {
+  function handleTruebtn(e: React.MouseEvent | KeyboardEvent) {
+    e.preventDefault()
     if (currentObject) {
       const res = SprintCheckResult(
         currentObject as Word,
@@ -188,7 +203,7 @@ function SprintGame() {
       // @ts-ignore
       resultsBoolean.push(resultObject.result)
       // @ts-ignore
-      results.push(resultObject)
+      if (results) results.push(resultObject)
 
       if (res) {
         SprintAddScore(
@@ -240,14 +255,15 @@ function SprintGame() {
     if (!end) {
       // @ts-ignore
       if (event.key === 'ArrowRight') {
-        handleTruebtn()
+        handleTruebtn(event)
       }
       // @ts-ignore
       if (event.key === 'ArrowLeft') {
-        handleFalseBtn()
+        handleFalseBtn(event)
       }
     }
   }
+
   function handleRepeatBtn() {
     setEnd(true)
     setResultsBoolean([])

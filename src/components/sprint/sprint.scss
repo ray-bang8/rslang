@@ -3,11 +3,10 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  // height: 300px;
 }
 
 .sprintSection {
-  height: 45vh;
+  height: 50vh;
 }
 
 .sprint-body {
@@ -327,6 +326,12 @@
   left: 0;
 }
 
+@media (max-width: 1000px) {
+  .result__table-transcript {
+    display: none;
+  }
+}
+
 @media (max-width: 685px) {
   .results {
     width: 90vw;
@@ -344,6 +349,10 @@
   .sprint-menu__select {
     margin-bottom: 4%;
     margin-right: 0;
+  }
+
+  .result__title {
+    font-size: 22px;
   }
 }
 

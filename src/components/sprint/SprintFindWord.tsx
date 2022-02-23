@@ -1,11 +1,12 @@
 function SprintFindWord(word: string, data: Word[]) {
-  let foundWord
-  data.map((el) => {
-    if (el.word === word) {
-      foundWord = el
-    }
-    return el
-  })
+  let foundWord = []
+  foundWord = data.filter((el) => el.word === word)
+  // data.map((el) => {
+  //   if (el.word === word) {
+  //     foundWord = el
+  //   }
+  //   return el
+  // })
   return foundWord
 }
 

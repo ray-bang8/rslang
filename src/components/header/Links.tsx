@@ -20,8 +20,6 @@ function Links(props: any) {
       <li className="nav__ul-li">
         <NavLink to="/about">About</NavLink>
       </li>
-      {/* <li className="nav__ul-li"> */}
-      {/* </li> */}
     </ul>
   )
 }

@@ -3,7 +3,6 @@ import './AboutTeam.css'
 import arayImg from '../../img/aray.jpg'
 import elyorImg from '../../img/elyor.jpg'
 import shamshodImg from '../../img/shamshod.jpg'
-import teamImg from '../../img/team.svg'
 import Member from './Member'
 
 type MemberShip = {

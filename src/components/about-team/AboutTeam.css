@@ -7,9 +7,9 @@
 
 .team {
   width: 100%;
-  /* background-image: url('../../img/team.svg'); */
-  background-size: cover;
-  background-position: left;
+  background-image: url('../../img/team.svg');
+  background-size: 80%;
+  background-position: center;
   background-repeat: no-repeat;
   padding-top: 1vh;
   background-attachment: fixed;
@@ -23,12 +23,18 @@
   display: flex;
   flex-direction: column;
   /* background-color: black; */
-  border: 1px solid black;
-  background-color: rgba(238, 226, 236, 0.329);
+  border: 1px solid #fe5244;
+  background-color: rgba(238, 226, 236, 0.431);
   border-radius: 1.25em;
   box-sizing: border-box;
   padding-top: 20px;
   width: 400px;
+  margin-bottom: 100px;
+  transition: 1s ease;
+}
+
+.teamContainer:hover {
+  transform: scale(1.1);
 }
 
 .teamContainer:nth-child(2) {
