@@ -1,0 +1,128 @@
+.auth {
+  display: flex;
+  text-align: center;
+}
+
+.sidebar {
+  width: 60vw;
+  height: 100vh;
+  background-color: #FFDCDA;
+}
+
+.sidebar__rslogo {
+  width: 166px;
+  height: 77px;
+  margin-top: 30px;
+  margin-left: 50px;
+  background-image: url('../../img/rslogo.png');
+}
+
+.sidebar__astronaut {
+  position: relative;
+  width: 221px;
+  height: 246px;
+  top: 30%;
+  transform: translateY(-30%);
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url('../../img/astronaut.png');
+}
+
+.form-container {
+  text-align: center;
+  width: 40vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin-bottom: 10%;
+  font-size: 24px;
+  text-align: center;
+}
+
+.form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  padding: 10px;
+  margin: 8px 0;
+  font-size: 18px;
+  border: 1px solid #828282;
+  border-radius: 10px;
+}
+
+.login {
+  width: 100%;
+  padding: 12px;
+  margin: 30px 0;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  background-color: #FFDCDA;
+}
+
+.login:hover {
+  cursor: pointer;
+}
+
+.no-account {
+  text-align: center;
+  color: #828282;
+}
+
+.to-register {
+  text-align: center;
+  padding: 12px;
+  margin: 30px 0;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  border: 1px solid #FFDCDA;
+  background-color: #fff;
+}
+
+.to-register:hover {
+  background-color: #FFDCDA;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 980px) {
+  .sidebar {
+    width: 50vw;
+  }
+
+  .form-container {
+    width: 50vw;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: 40vw;
+  }
+
+  .form-container {
+    text-align: center;
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
+
+  .form-container {
+    width: 100vw;
+  }
+}
