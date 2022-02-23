@@ -1,4 +1,5 @@
 import React from 'react'
+
 import RoleBlock from './RoleBlock'
 
 type MemberShip = {
@@ -29,10 +30,11 @@ function Member(props: Members) {
         src={
           img || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN0fGXCbb1mvwXRj7lTKO9CDOGulBjWZHHsg&usqp=CAU'
         }
+        style={{ width: '80%' }}
       />
       <h5 className="team-member__name">{name}</h5>
       <RoleBlock role={position} />
-      <a href={gitHubLink}>{gitHubId} </a>
+      <a className="team-member__hub" href={gitHubLink}>@{gitHubId} </a>
     </figure>
   )
 }
