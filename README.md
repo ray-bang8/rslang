@@ -1,5 +1,26 @@
 # RS Lang
 
-**Ссылка на описание таска:** https://github.com/rolling-scopes-school/tasks/blob/master/tasks/stage-2/rs-lang/rslang.md
+The https://team48rslang.netlify.app is a tool for the learn English language. It may help students to learn and practice their English skills
 
-**Ссылка на UI дизайн:** https://www.figma.com/file/FASI3kLxR9oVS5NKEOCtYv/Untitled?node-id=0%3A1
+
+![image](https://user-images.githubusercontent.com/54850035/155329601-b673225f-8d02-431e-936e-c0285c91597d.png)
+
+
+# Technology Overview
+
+Stack
+
+ * Language: Typescript
+ * Front-end: React
+ * Deployment: Netlify
+ 
+ 
+Steps
+ * Clone repository
+ * Run npm install (installs dependencies in the root folder and client / server folders.)
+ * Run npm start (starts application on Local Host)
+
+
+ 
+ 
+
