@@ -3,7 +3,7 @@ import './AboutTeam.css'
 import arayImg from '../../img/aray.jpg'
 import elyorImg from '../../img/elyor.jpg'
 import shamshodImg from '../../img/shamshod.jpg'
-import teamImg from '../../img/team.jpg'
+import teamImg from '../../img/team.svg'
 import Member from './Member'
 
 type MemberShip = {
@@ -44,11 +44,13 @@ function AboutTeam() {
   ]
   return (
     <main className="team">
-      <img alt="team" className="teamImg" src={teamImg} />
+      <div className="teamImg" />
       <h1 className="team-title"> Our Team</h1>
       <div className="team-wrapper">
         {team.map((member: MemberShip) => (
-          <Member key={member.id} member={member} />
+          <div className="teamContainer">
+            <Member key={member.id} member={member} />
+          </div>
         ))}
       </div>
     </main>

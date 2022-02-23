@@ -46,7 +46,7 @@ function FormLogin() {
         />
         <input className="login" type="submit" value="Login" />
       </form>
-      <div className="no-account">Have no account yet?</div>
+      <div className="no-account" style={{ width: '100%' }}>Have no account yet?</div>
       <Link to="/register"><button className="to-register" onClick={handleRoute} type="button">Registration</button></Link>
     </div>
   )

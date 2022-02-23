@@ -23,7 +23,7 @@ function FormRegister() {
   }
 
   const handleRoute = () => {
-    history('/login')
+    history('/auth')
   }
 
   return (
